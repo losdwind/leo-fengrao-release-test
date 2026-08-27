@@ -572,6 +572,7 @@
         video.load();
       };
       let grassVideoReady=false;
+      let entryStarted=false;
       const ensureGrassVideo=()=>{
         if(staticDiagnostic||grassVideoReady)return;
         attachVideoSource(grassVideo,'metadata');
@@ -736,6 +737,11 @@
       const wantsDarianMedia=()=>scrollY>=singleVideoTl.scrollTrigger.start;
       const syncVideoPlayback=()=>{
         if(staticDiagnostic)return;
+        if(!entryStarted){
+          grassVideo.pause();
+          if(singleVideoReady)singleVideo.pause();
+          return;
+        }
         if(weChatFrozen){
           updateWeChatFreezeBlend();
           return;
@@ -774,7 +780,7 @@
       addEventListener('scroll',beginWeChatFreeze,{passive:true});
       addEventListener('scroll',scheduleMediaSync,{passive:true});
       addEventListener('scrollend',()=>{ScrollTrigger.update();syncMediaState()},{passive:true});
-      addEventListener('fengrao:start',ensureGrassVideo,{once:true});
+      addEventListener('fengrao:start',()=>{entryStarted=true;ensureGrassVideo();syncVideoPlayback()},{once:true});
 
       const makeStage=(panel,selectors)=>{
         const frame=panel.querySelector('.frame');
