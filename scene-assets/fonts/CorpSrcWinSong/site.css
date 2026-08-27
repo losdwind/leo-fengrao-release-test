@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "CorpSrcWinSong";
+  src: url("./site.woff2") format("woff2");
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+}

@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#315321">
   <meta name="description" content="李奥首张全长概念专辑《丰饶之海》">
   <title>丰饶之海 · 李奥</title>
-  <script>document.documentElement.classList.add('scroll-driven');window.__scrollDrivenMotion=true;</script>
-  <link rel="stylesheet" href="./scene-assets/fonts/CorpSrcWinSong/result.css">
+  <script>document.documentElement.classList.add('scroll-driven');if(new URLSearchParams(location.search).get('diag')==='static')document.documentElement.classList.add('diag-static');window.__scrollDrivenMotion=true;</script>
+  <link rel="stylesheet" href="./scene-assets/fonts/CorpSrcWinSong/site.css">
   <style>
     :root {
       --ink: rgba(255,255,255,.96);
@@ -22,6 +22,8 @@
     .film-freeze { position:absolute; inset:0; display:none; width:100%; height:100%; object-fit:cover; pointer-events:none; }
     .film .film-grass { opacity:1; }
     .film::after { position:absolute; inset:0; content:""; pointer-events:none; background:transparent; }
+    html.diag-static .film { background:url("./scene-assets/grass-still.jpg") center/cover no-repeat; }
+    html.diag-static .film video { display:none!important; }
     main { position:relative; z-index:1; }
     .panel { position:relative; min-height:100svh; overflow:hidden; isolation:isolate; scroll-snap-align:start; scroll-snap-stop:always; }
     .frame { position:absolute; inset:0; width:min(100%,750px); height:100%; margin-inline:auto; opacity:var(--visibility,0); }
@@ -519,6 +521,7 @@
       const grassVideo=document.querySelector('.film-grass');
       const singleVideo=document.querySelector('.film-single');
       const film=document.querySelector('.film');
+      const staticDiagnostic=document.documentElement.classList.contains('diag-static');
       const useWeChatFreeze=/MicroMessenger/i.test(navigator.userAgent);
       const freezeGrass=useWeChatFreeze?document.createElement('canvas'):null;
       const freezeSingle=useWeChatFreeze?document.createElement('canvas'):null;
@@ -540,13 +543,13 @@
       };
       let grassVideoReady=false;
       const ensureGrassVideo=()=>{
-        if(grassVideoReady)return;
+        if(staticDiagnostic||grassVideoReady)return;
         attachVideoSource(grassVideo,'metadata');
         grassVideoReady=true;
       };
       let singleVideoReady=false;
       const ensureSingleVideo=()=>{
-        if(singleVideoReady)return;
+        if(staticDiagnostic||singleVideoReady)return;
         attachVideoSource(singleVideo,'auto');
         singleVideoReady=true;
       };
@@ -702,6 +705,7 @@
       };
       const wantsDarianMedia=()=>scrollY>=singleVideoTl.scrollTrigger.start;
       const syncVideoPlayback=()=>{
+        if(staticDiagnostic)return;
         if(weChatFrozen){
           updateWeChatFreezeBlend();
           return;
