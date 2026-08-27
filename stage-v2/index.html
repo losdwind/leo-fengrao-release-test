@@ -1405,6 +1405,11 @@
     (()=>{
       if(!window.Swiper||!window.gsap||!window.ScrollTrigger)return;
       const root=document.documentElement;
+      const isolateMode=new URLSearchParams(location.search).get('isolate')||'';
+      const isolateVideo=isolateMode==='video'||isolateMode==='all';
+      const isolateMotion=isolateMode==='motion'||isolateMode==='all';
+      if(isolateVideo)root.classList.add('diag-static');
+      root.dataset.isolate=isolateMode;
       const main=document.querySelector('main');
       const panels=[...main.querySelectorAll(':scope > .panel')];
       if(!panels.length)return;
@@ -1430,11 +1435,22 @@
         if(animation)animation.pause(0);
         return {trigger,index,animation,isVideoCrossfade};
       });
+      if(isolateMotion){
+        triggerEntries.forEach(entry=>{
+          if(entry.animation&&!entry.isVideoCrossfade)entry.animation.progress(.5).pause();
+        });
+      }
 
       const grassVideo=document.querySelector('.film-grass');
       const buildingVideo=document.querySelector('.film-single');
       const albumAudio=document.querySelector('.album-audio');
       const darianAudio=document.querySelector('.darian-audio');
+      if(isolateVideo){
+        [grassVideo,buildingVideo].forEach(video=>{
+          video.pause();
+          video.play=()=>Promise.resolve();
+        });
+      }
       const darianIndex=panels.findIndex(panel=>panel.getAttribute('aria-label')==='首发单曲 达里安');
       let entryStarted=false;
       let buildingAttached=!!buildingVideo.currentSrc;
@@ -1499,6 +1515,7 @@
       const updateTimelines=position=>{
         triggerEntries.forEach(entry=>{
           if(!entry.animation||entry.index<0)return;
+          if(isolateMotion&&!entry.isVideoCrossfade)return;
           let progress=clamp(position-(entry.index-.5));
           if(entry.isVideoCrossfade)progress=clamp((progress-.55)/.28);
           entry.animation.progress(progress).pause();
@@ -1506,6 +1523,11 @@
       };
 
       const syncMedia=position=>{
+        if(isolateVideo){
+          grassVideo.pause();
+          buildingVideo.pause();
+          return;
+        }
         if(position>=Math.max(0,darianIndex-2.1)){
           attachBuilding();
           attachDarian();
@@ -1600,7 +1622,10 @@
       });
       addEventListener('fengrao:start',()=>{
         entryStarted=true;
-        if(grassVideo.paused)safePlay(grassVideo);
+        if(isolateVideo){
+          grassVideo.pause();
+          buildingVideo.pause();
+        }else if(grassVideo.paused)safePlay(grassVideo);
         updateFromSwiper(swiper);
       });
       document.addEventListener('visibilitychange',()=>{
