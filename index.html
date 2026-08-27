@@ -19,6 +19,7 @@
     body { margin:0; color:var(--ink); background:#172113; font-family:var(--serif); -webkit-font-smoothing:antialiased; text-rendering:geometricPrecision; }
     .film { position:fixed; inset:0; z-index:0; overflow:hidden; background:#24401b; }
     .film video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; opacity:0; will-change:opacity; }
+    .film-freeze { position:absolute; inset:0; display:none; width:100%; height:100%; object-fit:cover; pointer-events:none; }
     .film .film-grass { opacity:1; }
     .film::after { position:absolute; inset:0; content:""; pointer-events:none; background:transparent; }
     main { position:relative; z-index:1; }
@@ -348,8 +349,8 @@
 </head>
 <body>
   <div class="film" aria-hidden="true">
-    <video class="film-grass" autoplay muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="metadata" poster="./scene-assets/grass-still.jpg" data-src-mobile="./scene-assets/video-lite/grass-15s-540p.mp4" data-src-desktop="./scene-assets/video-lite/grass-15s-720p.mp4"></video>
-    <video class="film-single" autoplay muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="./scene-assets/building-still.jpg" data-src-mobile="./scene-assets/video-lite/building-15s-540p.mp4" data-src-desktop="./scene-assets/video-lite/building-15s-720p.mp4"></video>
+    <video class="film-grass" autoplay muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="metadata" poster="./scene-assets/grass-still.jpg" data-src-mobile="./scene-assets/video-lite/grass-15s-1080p-original.mp4" data-src-desktop="./scene-assets/video-lite/grass-15s-1080p-original.mp4"></video>
+    <video class="film-single" autoplay muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="./scene-assets/building-still.jpg" data-src-mobile="./scene-assets/video-lite/building-15s-1080p-original.mp4" data-src-desktop="./scene-assets/video-lite/building-15s-1080p-original.mp4"></video>
   </div>
   <audio class="album-audio" preload="none" loop src="./scene-assets/album-intro.mp3"></audio>
   <audio class="darian-audio" preload="none" loop src="./scene-assets/darian.mp3"></audio>
@@ -517,6 +518,15 @@
 
       const grassVideo=document.querySelector('.film-grass');
       const singleVideo=document.querySelector('.film-single');
+      const film=document.querySelector('.film');
+      const useWeChatFreeze=/MicroMessenger/i.test(navigator.userAgent);
+      const freezeGrass=useWeChatFreeze?document.createElement('canvas'):null;
+      const freezeSingle=useWeChatFreeze?document.createElement('canvas'):null;
+      if(useWeChatFreeze){
+        freezeGrass.className='film-freeze film-freeze-grass';
+        freezeSingle.className='film-freeze film-freeze-single';
+        film.append(freezeGrass,freezeSingle);
+      }
       const chooseVideoSource=video=>{
         const connection=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
         const constrained=connection?.saveData||['slow-2g','2g','3g'].includes(connection?.effectiveType);
@@ -627,8 +637,75 @@
       }).to({}, {duration:1});
       singleVideoTl.to(grassVideo,{autoAlpha:0,duration:1,ease:'none'},0)
         .fromTo(singleVideo,{autoAlpha:0},{autoAlpha:1,duration:1,ease:'none'},0);
+      let weChatFrozen=false;
+      let weChatFreezeTimer=0;
+      let lastFreezeCapture=0;
+      const drawVideoFreeze=(video,canvas,fallback)=>{
+        const width=Math.min(720,Math.max(390,Math.round(innerWidth*1.5)));
+        const height=Math.max(1,Math.round(width*innerHeight/innerWidth));
+        canvas.width=width;
+        canvas.height=height;
+        canvas.style.background=`url("${fallback}") center/cover no-repeat`;
+        if(video.readyState<2||!video.videoWidth||!video.videoHeight)return;
+        const context=canvas.getContext('2d',{alpha:false});
+        const sourceRatio=video.videoWidth/video.videoHeight;
+        const targetRatio=width/height;
+        let sx=0,sy=0,sw=video.videoWidth,sh=video.videoHeight;
+        if(sourceRatio>targetRatio){sw=sh*targetRatio;sx=(video.videoWidth-sw)/2}
+        else{sh=sw/targetRatio;sy=(video.videoHeight-sh)/2}
+        context.drawImage(video,sx,sy,sw,sh,0,0,width,height);
+        canvas.style.background='none';
+      };
+      const refreshWeChatFreezeFrames=()=>{
+        if(!useWeChatFreeze||weChatFrozen)return;
+        const now=performance.now();
+        if(now-lastFreezeCapture<1200)return;
+        lastFreezeCapture=now;
+        drawVideoFreeze(grassVideo,freezeGrass,'./scene-assets/grass-still.jpg');
+        drawVideoFreeze(singleVideo,freezeSingle,'./scene-assets/building-still.jpg');
+      };
+      if(useWeChatFreeze){
+        grassVideo.addEventListener('playing',()=>{lastFreezeCapture=0;refreshWeChatFreezeFrames()});
+        grassVideo.addEventListener('timeupdate',refreshWeChatFreezeFrames);
+        singleVideo.addEventListener('playing',()=>{lastFreezeCapture=0;refreshWeChatFreezeFrames()});
+        singleVideo.addEventListener('timeupdate',refreshWeChatFreezeFrames);
+      }
+      const updateWeChatFreezeBlend=()=>{
+        if(!weChatFrozen)return;
+        const progress=singleVideoTl.progress();
+        freezeGrass.style.opacity=1-progress;
+        freezeSingle.style.opacity=progress;
+      };
+      const beginWeChatFreeze=()=>{
+        if(!useWeChatFreeze)return;
+        clearTimeout(weChatFreezeTimer);
+        if(!weChatFrozen){
+          if(!freezeGrass.width)drawVideoFreeze(grassVideo,freezeGrass,'./scene-assets/grass-still.jpg');
+          if(!freezeSingle.width)drawVideoFreeze(singleVideo,freezeSingle,'./scene-assets/building-still.jpg');
+          freezeGrass.style.display='block';
+          freezeSingle.style.display='block';
+          grassVideo.style.display='none';
+          singleVideo.style.display='none';
+          grassVideo.pause();
+          singleVideo.pause();
+          weChatFrozen=true;
+        }
+        updateWeChatFreezeBlend();
+        weChatFreezeTimer=setTimeout(()=>{
+          weChatFrozen=false;
+          grassVideo.style.display='block';
+          singleVideo.style.display='block';
+          freezeGrass.style.display='none';
+          freezeSingle.style.display='none';
+          syncVideoPlayback();
+        },150);
+      };
       const wantsDarianMedia=()=>scrollY>=singleVideoTl.scrollTrigger.start;
       const syncVideoPlayback=()=>{
+        if(weChatFrozen){
+          updateWeChatFreezeBlend();
+          return;
+        }
         if(document.visibilityState!=='visible'){
           grassVideo.pause();
           if(singleVideoReady)singleVideo.pause();
@@ -660,6 +737,7 @@
         if(mediaSyncFrame)return;
         mediaSyncFrame=requestAnimationFrame(()=>{mediaSyncFrame=0;syncMediaState()});
       };
+      addEventListener('scroll',beginWeChatFreeze,{passive:true});
       addEventListener('scroll',scheduleMediaSync,{passive:true});
       addEventListener('scrollend',()=>{ScrollTrigger.update();syncMediaState()},{passive:true});
       addEventListener('load',ensureGrassVideo,{once:true});
