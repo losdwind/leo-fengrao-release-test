@@ -348,11 +348,11 @@
 </head>
 <body>
   <div class="film" aria-hidden="true">
-    <video class="film-grass" autoplay muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="metadata" poster="./scene-assets/grass-still.jpg"><source src="https://github.com/losdwind/leo-fengrao-ref/releases/download/media-cdn-test-20260827-01/grass-720p.mp4" type="video/mp4"></video>
-    <video class="film-single" autoplay muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="./scene-assets/building-still.jpg" data-src="https://github.com/losdwind/leo-fengrao-ref/releases/download/media-cdn-test-20260827-01/building-720p.mp4"></video>
+    <video class="film-grass" autoplay muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="metadata" poster="./scene-assets/grass-still.jpg" data-src-mobile="https://github.com/losdwind/leo-fengrao-ref/releases/download/media-cdn-test-20260827-01/grass-15s-540p.mp4" data-src-desktop="https://github.com/losdwind/leo-fengrao-ref/releases/download/media-cdn-test-20260827-01/grass-15s-720p.mp4"></video>
+    <video class="film-single" autoplay muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="./scene-assets/building-still.jpg" data-src-mobile="https://github.com/losdwind/leo-fengrao-ref/releases/download/media-cdn-test-20260827-01/building-15s-540p.mp4" data-src-desktop="https://github.com/losdwind/leo-fengrao-ref/releases/download/media-cdn-test-20260827-01/building-15s-720p.mp4"></video>
   </div>
-  <audio class="album-audio" autoplay preload="auto" loop src="./scene-assets/album-intro.mp3"></audio>
-  <audio class="darian-audio" preload="metadata" loop src="./scene-assets/darian.mp3"></audio>
+  <audio class="album-audio" preload="none" loop src="./scene-assets/album-intro.mp3"></audio>
+  <audio class="darian-audio" preload="none" loop src="./scene-assets/darian.mp3"></audio>
   <main>
     <section class="panel" aria-label="丰饶之海封面"><div class="frame">
       <div class="art-title-plane cover-art" role="img" aria-label="丰饶之海">
@@ -517,12 +517,22 @@
 
       const grassVideo=document.querySelector('.film-grass');
       const singleVideo=document.querySelector('.film-single');
+      const chooseVideoSource=video=>{
+        const connection=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+        const constrained=connection?.saveData||['slow-2g','2g','3g'].includes(connection?.effectiveType);
+        return video.dataset[constrained||matchMedia('(max-width:750px)').matches?'srcMobile':'srcDesktop'];
+      };
+      const attachVideoSource=(video,preload)=>{
+        if(video.src)return;
+        video.src=chooseVideoSource(video);
+        video.preload=preload;
+        video.load();
+      };
+      attachVideoSource(grassVideo,'metadata');
       let singleVideoReady=false;
       const ensureSingleVideo=()=>{
         if(singleVideoReady)return;
-        singleVideo.src=singleVideo.dataset.src;
-        singleVideo.preload='auto';
-        singleVideo.load();
+        attachVideoSource(singleVideo,'auto');
         singleVideoReady=true;
       };
       const albumAudio=document.querySelector('.album-audio');
@@ -1082,8 +1092,6 @@
         });
       };
       document.addEventListener('WeixinJSBridgeReady',attemptInitialAlbumAutoplay,{once:true});
-      addEventListener('load',attemptInitialAlbumAutoplay,{once:true});
-      requestAnimationFrame(attemptInitialAlbumAutoplay);
 
       const darianGateStorageKey='fengrao-darian-gate-passed-v1';
       const readGateState=()=>{
