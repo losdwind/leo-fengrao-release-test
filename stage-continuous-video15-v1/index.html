@@ -645,8 +645,31 @@
         if(mediaSyncFrame)return;
         mediaSyncFrame=requestAnimationFrame(()=>{mediaSyncFrame=0;syncMediaState()});
       };
+      let previousScrollY=scrollY;
+      let previousScrollDirection=0;
+      let scrubSettleTimer=0;
+      const settleScrubTimelines=()=>{
+        ScrollTrigger.getAll().forEach(trigger=>trigger.getTween?.()?.progress(1));
+        ScrollTrigger.update();
+      };
+      const stabilizeScrubOnReverse=()=>{
+        const nextScrollY=scrollY;
+        const nextDirection=Math.sign(nextScrollY-previousScrollY);
+        if(nextDirection&&previousScrollDirection&&nextDirection!==previousScrollDirection){
+          settleScrubTimelines();
+        }
+        if(nextDirection)previousScrollDirection=nextDirection;
+        previousScrollY=nextScrollY;
+        clearTimeout(scrubSettleTimer);
+        scrubSettleTimer=setTimeout(settleScrubTimelines,120);
+      };
       addEventListener('scroll',scheduleMediaSync,{passive:true});
-      addEventListener('scrollend',()=>{ScrollTrigger.update();syncMediaState()},{passive:true});
+      addEventListener('scroll',stabilizeScrubOnReverse,{passive:true});
+      addEventListener('scrollend',()=>{
+        clearTimeout(scrubSettleTimer);
+        settleScrubTimelines();
+        syncMediaState();
+      },{passive:true});
 
       const makeStage=(panel,selectors)=>{
         const frame=panel.querySelector('.frame');
