@@ -369,6 +369,7 @@
     html.swiper-pilot .panel .frame { --visibility:1; }
     html.swiper-pilot .panel:not(.is-near) { visibility:hidden; }
     html.swiper-pilot .scroll-cue { display:none; }
+    html.isolate-motion .film video { display:block!important; }
   </style>
 </head>
 <body>
@@ -1409,6 +1410,10 @@
       const isolateVideo=isolateMode==='video'||isolateMode==='all';
       const isolateMotion=isolateMode==='motion'||isolateMode==='all';
       if(isolateVideo)root.classList.add('diag-static');
+      if(isolateMotion&&!isolateVideo){
+        root.classList.remove('diag-static');
+        root.classList.add('isolate-motion');
+      }
       root.dataset.isolate=isolateMode;
       const main=document.querySelector('main');
       const panels=[...main.querySelectorAll(':scope > .panel')];
@@ -1625,7 +1630,14 @@
         if(isolateVideo){
           grassVideo.pause();
           buildingVideo.pause();
-        }else if(grassVideo.paused)safePlay(grassVideo);
+        }else{
+          if(!grassVideo.currentSrc){
+            grassVideo.src=chooseVideoSource(grassVideo);
+            grassVideo.preload='auto';
+            grassVideo.load();
+          }
+          if(grassVideo.paused)safePlay(grassVideo);
+        }
         updateFromSwiper(swiper);
       });
       document.addEventListener('visibilitychange',()=>{
