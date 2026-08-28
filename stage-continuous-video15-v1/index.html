@@ -247,7 +247,8 @@
     .continuation-lockup { position:absolute; inset:0; display:grid; place-items:center; }
     .continuation-title { margin:0; writing-mode:vertical-rl; text-orientation:upright; font-size:clamp(2rem,8vw,4rem); font-weight:300; line-height:1; letter-spacing:.32em; }
     .chorus p { margin:2.4rem 0 0; font-size:clamp(1.24rem,5vw,2.2rem); font-weight:300; }
-    .hook-type-scene { position:absolute; inset:0; z-index:4; overflow:hidden; container-type:inline-size; visibility:visible!important; pointer-events:none; }
+    .hook-type-scene { position:absolute; inset:0; z-index:4; overflow:hidden; container-type:inline-size; visibility:visible!important; opacity:0; transition:opacity .12s linear; pointer-events:none; }
+    .hook-type-scene.is-hook-active { opacity:1; }
     .hook-type-word { position:absolute; top:calc(50% - 14.833cqw); left:50%; display:flex; gap:2.55cqw; margin:0; translate:-50% -50%; color:var(--ink); font:400 clamp(2.7rem,11.8cqw,5.5rem)/1 var(--serif); white-space:nowrap; transform-origin:center; will-change:transform,opacity; }
     .hook-type-glyph { display:inline-block; opacity:0; }
     .hook-type-dyd { position:absolute; top:calc(50% - 5.5cqw); left:50%; margin:0; translate:-50% -50%; color:var(--ink); font:400 clamp(1.5rem,5cqw,2.35rem)/1 var(--serif); letter-spacing:9vw; white-space:nowrap; opacity:0; transform-origin:center; }
@@ -258,7 +259,7 @@
     .scroll-cue { position:fixed; right:max(1rem,env(safe-area-inset-right)); bottom:max(1.25rem,env(safe-area-inset-bottom)); z-index:5; display:flex; align-items:center; gap:.55rem; font:.56rem/1 Arial,sans-serif; letter-spacing:.14em; opacity:.7; transition:opacity .3s; }
     .scroll-cue::after { width:1.8rem; height:1px; background:currentColor; content:""; } body.at-end .scroll-cue { opacity:0; }
     html.scroll-driven { scroll-snap-type:none; scroll-behavior:auto; }
-    html.scroll-driven .panel { height:76svh; min-height:76svh; overflow:clip; scroll-snap-align:none; scroll-snap-stop:normal; }
+    html.scroll-driven .panel { height:76svh; min-height:76svh; overflow:hidden; scroll-snap-align:none; scroll-snap-stop:normal; }
     html.scroll-driven .frame { position:relative; inset:auto; top:auto; width:min(100%,750px); height:100svh; margin-inline:auto; opacity:1; }
     html.scroll-driven .page3-sequence,
     html.scroll-driven .page4-sequence,
@@ -294,6 +295,10 @@
     html.scroll-driven .darian-verse-panel .page-content-layer { opacity:0 !important; }
     .darian-verse-sequence { position:absolute; inset:0; z-index:4; width:100%; height:100svh; pointer-events:none; }
     html.scroll-driven .frame > .darian-verse-sequence { visibility:visible; }
+    html.scroll-driven .live-glyph,
+    html.scroll-driven .darian-motion-layer,
+    html.scroll-driven .hook-type-word,
+    html.scroll-driven .darian-verse-window { will-change:auto; }
     .darian-verse-window { position:absolute; overflow:hidden; opacity:0; will-change:transform,opacity,clip-path; }
     .darian-verse-source { position:absolute; display:block; max-width:none; object-fit:contain; object-position:center; pointer-events:none; user-select:none; }
     html.scroll-driven .psd-overlay.reveal { opacity:1; transform:none; filter:none; transition:none; }
@@ -955,11 +960,12 @@
         });
         scene.append(cycle);
         frame.append(scene);
-        gsap.set(scene,{opacity:0});
         return {frame,scene,typedWords,dyd,cycle};
       };
+      const hookStates=[];
       hookConfigs.forEach(config=>{
         const state=makeHookScene(config.panel,config.label,config.flashWords);
+        hookStates.push({config,state});
         const tl=gsap.timeline({
           scrollTrigger:{
             trigger:config.panel,
@@ -970,8 +976,6 @@
             invalidateOnRefresh:true
           }
         }).to({}, {duration:1});
-        tl.fromTo(state.scene,{opacity:0},{opacity:1,duration:.055,ease:'power1.out'},0)
-          .to(state.scene,{opacity:0,duration:.055,ease:'power1.in'},.945);
         state.typedWords.forEach((word,wordIndex)=>{
           const glyphs=[...word.children];
           const start=.035+wordIndex*.055;
@@ -996,12 +1000,28 @@
         });
       });
 
+      let hookVisibilityFrame=0;
+      const syncHookVisibility=()=>{
+        hookVisibilityFrame=0;
+        const viewportHeight=innerHeight||1;
+        hookStates.forEach(({config,state})=>{
+          const start=config.panel.offsetTop-viewportHeight*panelCrossing(config.panel)/100;
+          const end=config.next.offsetTop-viewportHeight*panelCrossing(config.next)/100;
+          state.scene.classList.toggle('is-hook-active',scrollY>=start&&scrollY<=end);
+        });
+      };
+      const scheduleHookVisibility=()=>{
+        if(hookVisibilityFrame)return;
+        hookVisibilityFrame=requestAnimationFrame(syncHookVisibility);
+      };
+      addEventListener('scroll',scheduleHookVisibility,{passive:true});
+
       ScrollTrigger.create({
         trigger:scenePanels.at(-1),
         start:'top center',
         onToggle:self=>document.body.classList.toggle('at-end',self.isActive)
       });
-      const refreshStableState=()=>{ScrollTrigger.refresh();ScrollTrigger.update();scheduleMediaSync()};
+      const refreshStableState=()=>{ScrollTrigger.refresh();ScrollTrigger.update();scheduleMediaSync();syncHookVisibility()};
       addEventListener('load',refreshStableState,{once:true});
       document.fonts?.ready?.then(refreshStableState);
       requestAnimationFrame(refreshStableState);
