@@ -8,8 +8,8 @@
   <title>丰饶之海 · 李奥</title>
   <base href="../">
   <script>document.documentElement.classList.add('scroll-driven','entry-pending');if(new URLSearchParams(location.search).get('diag')==='static')document.documentElement.classList.add('diag-static');window.__scrollDrivenMotion=true;</script>
-  <link rel="stylesheet" href="../scene-assets/fonts/CorpSrcWinSong/site.css">
-  <link rel="stylesheet" href="../scene-assets/vendor/swiper.min.css">
+  <link rel="stylesheet" href="./scene-assets/fonts/CorpSrcWinSong/site.css">
+  <link rel="stylesheet" href="./scene-assets/vendor/swiper.min.css">
   <style>
     :root {
       --ink: rgba(255,255,255,.96);
@@ -20,7 +20,7 @@
     html { background:#172113; scroll-snap-type:y mandatory; }
     body { margin:0; color:var(--ink); background:#172113; font-family:var(--serif); -webkit-font-smoothing:antialiased; text-rendering:geometricPrecision; }
     html.entry-pending,html.entry-pending body { overflow:hidden; }
-    .entry-gate { position:fixed; inset:0; z-index:1000; overflow:hidden; background:#24401b url("../scene-assets/grass-still.jpg") center/cover no-repeat; opacity:1; transition:opacity .62s cubic-bezier(.22,.61,.36,1); }
+    .entry-gate { position:fixed; inset:0; z-index:1000; overflow:hidden; background:#24401b url("./scene-assets/grass-still.jpg") center/cover no-repeat; opacity:1; transition:opacity .62s cubic-bezier(.22,.61,.36,1); }
     .entry-gate.is-leaving { opacity:0; pointer-events:none; }
     .entry-gate[hidden] { display:none; }
     .entry-gate .frame { opacity:1; }
@@ -35,7 +35,7 @@
     .film-freeze { position:absolute; inset:0; display:none; width:100%; height:100%; object-fit:cover; pointer-events:none; }
     .film .film-grass { opacity:1; }
     .film::after { position:absolute; inset:0; content:""; pointer-events:none; background:transparent; }
-    html.diag-static .film { background:url("../scene-assets/grass-still.jpg") center/cover no-repeat; }
+    html.diag-static .film { background:url("./scene-assets/grass-still.jpg") center/cover no-repeat; }
     html.diag-static .film video { display:none!important; }
     main { position:relative; z-index:1; }
     .panel { position:relative; min-height:100svh; overflow:hidden; isolation:isolate; scroll-snap-align:start; scroll-snap-stop:always; }
@@ -360,7 +360,7 @@
     .darian-glyph-plane:nth-child(2) .live-glyph { top:57.71%; left:10.60%; width:7.53%; height:7.08%; }
     .darian-glyph-plane:nth-child(3) .live-glyph { top:66.38%; left:10.60%; width:7.53%; height:8.08%; }
     @media (min-width:751px) { .frame { background:rgba(15,31,11,.025); } .vline,.track { letter-spacing:.1em; } }
-    @media (prefers-reduced-motion:reduce) { html{scroll-behavior:auto}.reveal{transition:none}.overview-motion,.sentence-group,.sentence-glyph,.page5-tag-motion,.page6-static,.page6-sentence,.page6-glyph,.pre-darian-static,.pre-darian-group,.pre-darian-glyph{opacity:1;scale:1;transform:none;animation:none!important}.film video{display:none}.film{background:url("../scene-assets/grass-still.jpg") center/cover no-repeat} }
+    @media (prefers-reduced-motion:reduce) { html{scroll-behavior:auto}.reveal{transition:none}.overview-motion,.sentence-group,.sentence-glyph,.page5-tag-motion,.page6-static,.page6-sentence,.page6-glyph,.pre-darian-static,.pre-darian-group,.pre-darian-glyph{opacity:1;scale:1;transform:none;animation:none!important}.film video{display:none}.film{background:url("./scene-assets/grass-still.jpg") center/cover no-repeat} }
     html.swiper-pilot { height:100%; overflow:hidden; scroll-snap-type:none; }
     html.swiper-pilot body { height:100%; overflow:hidden; overscroll-behavior:none; }
     html.swiper-pilot main.swiper { position:relative; width:100%; height:100svh; overflow:hidden; }
@@ -381,8 +381,8 @@
   <div class="entry-gate" aria-label="页面载入">
     <div class="frame">
       <div class="art-title-plane cover-art" role="img" aria-label="丰饶之海">
-        <img class="cover-art-left entry-critical-image" src="../scene-assets/psd-overlays/01.png" alt="" aria-hidden="true">
-        <img class="cover-art-right entry-critical-image" src="../scene-assets/psd-overlays/01.png" alt="" aria-hidden="true">
+        <img class="cover-art-left entry-critical-image" src="./scene-assets/psd-overlays/01.png" alt="" aria-hidden="true">
+        <img class="cover-art-right entry-critical-image" src="./scene-assets/psd-overlays/01.png" alt="" aria-hidden="true">
       </div>
       <div class="cover-en">THE SEA<br>OF FERTILITY</div>
       <h1 class="cover-thesis">在匮乏中抵达丰饶<small>ARRIVING AT ABUNDANCE<br>THROUGH SCARCITY</small></h1>
@@ -390,31 +390,31 @@
     </div>
   </div>
   <div class="film" aria-hidden="true">
-    <video class="film-grass" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="../scene-assets/grass-still.jpg" data-src-mobile="../scene-assets/video-hq15/grass-15s-1080p-formal.mp4" data-src-desktop="../scene-assets/video-hq15/grass-15s-1080p-formal.mp4"></video>
-    <video class="film-single" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="../scene-assets/building-still.jpg" data-src-mobile="../scene-assets/video-hq15/building-15s-1080p-formal.mp4" data-src-desktop="../scene-assets/video-hq15/building-15s-1080p-formal.mp4"></video>
+    <video class="film-grass" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="./scene-assets/grass-still.jpg" data-src-mobile="./scene-assets/video-hq15/grass-15s-1080p-formal.mp4" data-src-desktop="./scene-assets/video-hq15/grass-15s-1080p-formal.mp4"></video>
+    <video class="film-single" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="./scene-assets/building-still.jpg" data-src-mobile="./scene-assets/video-hq15/building-15s-1080p-formal.mp4" data-src-desktop="./scene-assets/video-hq15/building-15s-1080p-formal.mp4"></video>
   </div>
-  <audio class="album-audio" preload="none" loop src="../scene-assets/album-intro.mp3"></audio>
-  <audio class="darian-audio" preload="none" loop src="../scene-assets/darian.mp3"></audio>
+  <audio class="album-audio" preload="none" loop src="./scene-assets/album-intro.mp3"></audio>
+  <audio class="darian-audio" preload="none" loop src="./scene-assets/darian.mp3"></audio>
   <main>
     <section class="panel" aria-label="丰饶之海封面"><div class="frame">
       <div class="art-title-plane cover-art" role="img" aria-label="丰饶之海">
-        <img class="cover-art-left" src="../scene-assets/psd-overlays/01.png" alt="" aria-hidden="true">
-        <img class="cover-art-right" src="../scene-assets/psd-overlays/01.png" alt="" aria-hidden="true">
+        <img class="cover-art-left" src="./scene-assets/psd-overlays/01.png" alt="" aria-hidden="true">
+        <img class="cover-art-right" src="./scene-assets/psd-overlays/01.png" alt="" aria-hidden="true">
       </div>
       <div class="cover-en reveal" style="--delay:.12s">THE SEA<br>OF FERTILITY</div>
       <h1 class="cover-thesis reveal" style="--delay:.2s">在匮乏中抵达丰饶<small>ARRIVING AT ABUNDANCE<br>THROUGH SCARCITY</small></h1>
     </div></section>
     <section class="panel" aria-label="李奥"><div class="frame">
-      <img class="title-image artist-mark reveal" src="../scene-assets/home-artist.png" alt="李奥">
+      <img class="title-image artist-mark reveal" src="./scene-assets/home-artist.png" alt="李奥">
       <p class="artist-caption reveal" style="--delay:.15s">个人首张全长概念专辑<small>DEBUT FULL-LENGTH<br>CONCEPT ALBUM</small></p>
     </div></section>
     <section class="panel" aria-label="三章总览"><div class="frame">
       <div class="brand">THE SEA<br>OF FERTILITY</div>
       <div class="art-title-plane overview-art" role="img" aria-label="丰饶之海">
-        <img class="overview-art-top" src="../scene-assets/psd-overlays/shared-title-34.png" alt="" aria-hidden="true">
-        <img class="overview-art-middle-left" src="../scene-assets/psd-overlays/shared-title-34.png" alt="" aria-hidden="true">
-        <img class="overview-art-middle-right" src="../scene-assets/psd-overlays/shared-title-34.png" alt="" aria-hidden="true">
-        <img class="overview-art-bottom" src="../scene-assets/psd-overlays/shared-title-34.png" alt="" aria-hidden="true">
+        <img class="overview-art-top" src="./scene-assets/psd-overlays/shared-title-34.png" alt="" aria-hidden="true">
+        <img class="overview-art-middle-left" src="./scene-assets/psd-overlays/shared-title-34.png" alt="" aria-hidden="true">
+        <img class="overview-art-middle-right" src="./scene-assets/psd-overlays/shared-title-34.png" alt="" aria-hidden="true">
+        <img class="overview-art-bottom" src="./scene-assets/psd-overlays/shared-title-34.png" alt="" aria-hidden="true">
       </div>
       <div class="overview-art-en">THE SEA<br>OF FERTILITY</div>
       <p class="vertical-thesis reveal" style="--delay:.12s">在匮乏中抵达丰饶<small>ARRIVING AT ABUNDANCE<br>THROUGH SCARCITY</small></p>
@@ -510,9 +510,9 @@
     </div></section>
   </main>
   <div class="scroll-cue" aria-hidden="true">SCROLL</div>
-  <script src="../scene-assets/vendor/gsap.min.js"></script>
-  <script src="../scene-assets/vendor/ScrollTrigger.min.js"></script>
-  <script src="../scene-assets/psd-overlays/pre-darian-motion-data.js"></script>
+  <script src="./scene-assets/vendor/gsap.min.js"></script>
+  <script src="./scene-assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="./scene-assets/psd-overlays/pre-darian-motion-data.js"></script>
   <script>
     (()=>{
       if(!window.gsap||!window.ScrollTrigger)return;
@@ -710,8 +710,8 @@
         const now=performance.now();
         if(now-lastFreezeCapture<1200)return;
         lastFreezeCapture=now;
-        drawVideoFreeze(grassVideo,freezeGrass,'../scene-assets/grass-still.jpg');
-        drawVideoFreeze(singleVideo,freezeSingle,'../scene-assets/building-still.jpg');
+        drawVideoFreeze(grassVideo,freezeGrass,'./scene-assets/grass-still.jpg');
+        drawVideoFreeze(singleVideo,freezeSingle,'./scene-assets/building-still.jpg');
       };
       if(useWeChatFreeze){
         grassVideo.addEventListener('playing',()=>{lastFreezeCapture=0;refreshWeChatFreezeFrames()});
@@ -729,8 +729,8 @@
         if(!useWeChatFreeze)return;
         clearTimeout(weChatFreezeTimer);
         if(!weChatFrozen){
-          if(!freezeGrass.width)drawVideoFreeze(grassVideo,freezeGrass,'../scene-assets/grass-still.jpg');
-          if(!freezeSingle.width)drawVideoFreeze(singleVideo,freezeSingle,'../scene-assets/building-still.jpg');
+          if(!freezeGrass.width)drawVideoFreeze(grassVideo,freezeGrass,'./scene-assets/grass-still.jpg');
+          if(!freezeSingle.width)drawVideoFreeze(singleVideo,freezeSingle,'./scene-assets/building-still.jpg');
           freezeGrass.style.display='block';
           freezeSingle.style.display='block';
           grassVideo.style.display='none';
@@ -1406,7 +1406,7 @@
       });
     })();
   </script>
-  <script src="../scene-assets/vendor/swiper.min.js"></script>
+  <script src="./scene-assets/vendor/swiper.min.js"></script>
   <script>
     (()=>{
       if(!window.Swiper||!window.gsap||!window.ScrollTrigger)return;
@@ -1489,8 +1489,8 @@
         }catch{}
       };
       const visualMedia={
-        grass:{src:'../scene-assets/video-hq15/grass-15s-1080p-formal.mp4',poster:'../scene-assets/grass-still.jpg'},
-        building:{src:'../scene-assets/video-hq15/building-15s-1080p-formal.mp4',poster:'../scene-assets/building-still.jpg'}
+        grass:{src:'./scene-assets/video-hq15/grass-15s-1080p-formal.mp4',poster:'./scene-assets/grass-still.jpg'},
+        building:{src:'./scene-assets/video-hq15/building-15s-1080p-formal.mp4',poster:'./scene-assets/building-still.jpg'}
       };
       const switchVisual=zone=>{
         const media=visualMedia[zone];
