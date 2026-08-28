@@ -1,0 +1,1679 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#315321">
+  <meta name="description" content="李奥首张全长概念专辑《丰饶之海》">
+  <title>丰饶之海 · 李奥</title>
+  <base href="../">
+  <script>document.documentElement.classList.add('scroll-driven','entry-pending');if(new URLSearchParams(location.search).get('diag')==='static')document.documentElement.classList.add('diag-static');window.__scrollDrivenMotion=true;</script>
+  <link rel="stylesheet" href="../scene-assets/fonts/CorpSrcWinSong/site.css">
+  <link rel="stylesheet" href="../scene-assets/vendor/swiper.min.css">
+  <style>
+    :root {
+      --ink: rgba(255,255,255,.96);
+      --serif: "CorpSrcWinSong","Songti SC","STSong","SimSun","Noto Serif CJK SC",serif;
+      --latin: Didot,"Bodoni 72","Times New Roman",serif;
+    }
+    * { box-sizing: border-box; }
+    html { background:#172113; scroll-snap-type:y mandatory; }
+    body { margin:0; color:var(--ink); background:#172113; font-family:var(--serif); -webkit-font-smoothing:antialiased; text-rendering:geometricPrecision; }
+    html.entry-pending,html.entry-pending body { overflow:hidden; }
+    .entry-gate { position:fixed; inset:0; z-index:1000; overflow:hidden; background:#24401b url("../scene-assets/grass-still.jpg") center/cover no-repeat; opacity:1; transition:opacity .62s cubic-bezier(.22,.61,.36,1); }
+    .entry-gate.is-leaving { opacity:0; pointer-events:none; }
+    .entry-gate[hidden] { display:none; }
+    .entry-gate .frame { opacity:1; }
+    .entry-gate .cover-thesis,.entry-gate .cover-en { opacity:1; filter:none; }
+    .entry-gate .cover-thesis { transform:translateX(-50%); }
+    .entry-action { position:absolute; top:76.5%; left:50%; z-index:8; min-width:5.8em; padding:.5em .9em; border:0; color:rgba(255,255,255,.94); background:transparent; font:300 clamp(.72rem,2.8vw,.9rem)/1 var(--serif); letter-spacing:.12em; transform:translateX(-50%); }
+    .entry-action::after { display:block; width:1px; height:1.8rem; margin:.65rem auto 0; background:currentColor; content:""; transform-origin:top; animation:entry-pulse 1.6s cubic-bezier(.4,0,.2,1) infinite; }
+    .entry-action:not(.is-ready) { pointer-events:none; opacity:.78; }
+    @keyframes entry-pulse { 0%,100%{transform:scaleY(.32);opacity:.32} 48%{transform:scaleY(1);opacity:.9} }
+    .film { position:fixed; inset:0; z-index:0; overflow:hidden; background:#24401b; }
+    .film video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; opacity:0; will-change:opacity; }
+    .film-freeze { position:absolute; inset:0; display:none; width:100%; height:100%; object-fit:cover; pointer-events:none; }
+    .film .film-grass { opacity:1; }
+    .film::after { position:absolute; inset:0; content:""; pointer-events:none; background:transparent; }
+    html.diag-static .film { background:url("../scene-assets/grass-still.jpg") center/cover no-repeat; }
+    html.diag-static .film video { display:none!important; }
+    main { position:relative; z-index:1; }
+    .panel { position:relative; min-height:100svh; overflow:hidden; isolation:isolate; scroll-snap-align:start; scroll-snap-stop:always; }
+    .frame { position:absolute; inset:0; width:min(100%,750px); height:100%; margin-inline:auto; opacity:var(--visibility,0); }
+    .brand { position:absolute; top:max(2.5rem,calc(env(safe-area-inset-top) + 1rem)); right:7.3%; z-index:4; font:400 clamp(.53rem,1.55vw,.72rem)/.88 Arial,sans-serif; letter-spacing:-.035em; text-align:center; }
+    .section-tag { position:absolute; top:max(2.4rem,calc(env(safe-area-inset-top) + .9rem)); left:7.1%; margin:0; font-size:clamp(1.12rem,4.5vw,2rem); font-weight:300; letter-spacing:.04em; }
+    .reveal { opacity:0; transform:translateY(2.2rem); filter:blur(3px); transition:opacity .75s cubic-bezier(.2,.65,.25,1),transform 1s cubic-bezier(.2,.65,.25,1),filter .75s ease; transition-delay:var(--delay,0s); }
+    .panel.is-active .reveal { opacity:1; transform:translateY(var(--drift,0)); filter:blur(0); }
+    .panel.is-before .reveal { opacity:0; transform:translateY(-2.8rem); }
+    .cover-thesis.reveal,.artist-mark.reveal,.artist-caption.reveal { transform:translate(-50%,2.2rem); }
+    .panel.is-active .cover-thesis.reveal,.panel.is-active .artist-mark.reveal,.panel.is-active .artist-caption.reveal { transform:translate(-50%,var(--drift,0)); }
+    .panel.is-before .cover-thesis.reveal,.panel.is-before .artist-mark.reveal,.panel.is-before .artist-caption.reveal { transform:translate(-50%,-2.8rem); }
+    .title-image { display:block; object-fit:contain; }
+    .frame > * { visibility:visible; }
+    .psd-overlay {
+      position:absolute;
+      inset:0;
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:center;
+      pointer-events:none;
+      user-select:none;
+    }
+    .art-title-plane,.live-content-stage,.live-motion-plane { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+    .art-title-plane { z-index:2; overflow:hidden; }
+    .art-title-plane img { position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:contain; object-position:center; user-select:none; }
+    .cover-art-left { clip-path:inset(35.91% 28.67% 42.89% 11.33%); }
+    .cover-art-right { clip-path:inset(35.91% 12.67% 49.63% 71.33%); }
+    .overview-art-top { clip-path:inset(8.98% 70.67% 78.90% 2.67%); }
+    .overview-art-middle-left { clip-path:inset(21.10% 94% 77.16% 2.67%); }
+    .overview-art-middle-right { clip-path:inset(21.10% 70.67% 77.16% 14%); }
+    .overview-art-bottom { clip-path:inset(22.84% 70.67% 52.12% 2.67%); }
+    .overview-art-en { position:absolute; top:21.1%; left:6%; z-index:3; font:400 clamp(.53rem,1.55vw,.72rem)/.88 Arial,sans-serif; letter-spacing:-.035em; }
+    .live-content-stage { transform-origin:center; }
+    .live-glyph { display:inline-block; will-change:auto; }
+    .panel.is-near .live-glyph { will-change:transform,opacity; }
+    .darian-live-word { position:absolute; left:8%; bottom:24.5%; z-index:3; margin:0; writing-mode:vertical-rl; color:var(--ink); font-size:clamp(3.2rem,15vw,6rem); font-weight:300; letter-spacing:.09em; line-height:1; pointer-events:none; }
+    .darian-live-word .live-glyph { display:inline-block; }
+    .darian-ghost-word { z-index:2; }
+    .darian-title-placeholder { visibility:hidden; }
+    .continuity-34 {
+      position:fixed;
+      inset:0;
+      z-index:2;
+      width:min(100%,750px);
+      height:100svh;
+      margin-inline:auto;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .3s ease;
+    }
+    .continuity-34.is-visible { opacity:1; }
+    .continuity-34 img { display:block; width:100%; height:100%; object-fit:contain; object-position:center; }
+    .continuity-title { transition-duration:.72s; transition-timing-function:cubic-bezier(.22,.61,.36,1); }
+    .page3-sequence,.page4-sequence,.page5-sequence,.page6-sequence,.pre-darian-sequence {
+      position:fixed;
+      inset:0;
+      z-index:3;
+      width:min(100%,750px);
+      height:100svh;
+      margin-inline:auto;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .42s cubic-bezier(.3,0,.2,1);
+    }
+    .page4-sequence { transition-duration:.72s; transition-timing-function:cubic-bezier(.22,.61,.36,1); }
+    .page5-sequence.is-running,.page6-sequence.is-running,.pre-darian-sequence.is-running { opacity:1; }
+    .page5-sequence.is-reverse-hidden,.page6-sequence.is-reverse-hidden,.pre-darian-sequence.is-reverse-hidden {
+      opacity:0 !important;
+      transition:none !important;
+    }
+    .page5-sequence.preview-one .sentence-group:not(.sentence-1) { display:none; }
+    .overview-motion {
+      opacity:0;
+      transform:translateX(-7.5%);
+      will-change:transform,opacity;
+    }
+    .overview-thesis { left:6%; }
+    .page3-sequence.is-running .overview-thesis { animation:overview-slide-in .82s cubic-bezier(.2,.7,.2,1) .12s both; }
+    .page3-sequence.is-running .overview-chapter-1 { animation:overview-slide-in .88s cubic-bezier(.2,.7,.2,1) 1.02s both; }
+    .page3-sequence.is-running .overview-chapter-2 { animation:overview-slide-in .88s cubic-bezier(.2,.7,.2,1) 1.30s both; }
+    .page3-sequence.is-running .overview-chapter-3 { animation:overview-slide-in .88s cubic-bezier(.2,.7,.2,1) 1.58s both; }
+    .page4-sequence.is-running .album-guide-motion { animation:overview-slide-in .82s cubic-bezier(.2,.7,.2,1) .12s both; }
+    .page5-sequence.is-running .page5-tag-motion { animation:page5-tag-in .88s ease-out .08s both; }
+    .page5-sequence.is-running .sentence-group { opacity:1; transform:none; }
+    .page5-sequence.is-running .sentence-group.is-current .sentence-glyph {
+      animation:glyph-rise-converge var(--glyph-duration) cubic-bezier(.16,.68,.2,1) var(--glyph-delay) both;
+      will-change:transform,opacity;
+    }
+    .page5-sequence.is-running .sentence-group.is-complete .sentence-glyph { opacity:1; transform:translateY(0) scale(1); }
+    .page5-sequence.is-exiting .sentence-group { opacity:1; }
+    .page5-sequence.is-exiting .sentence-glyph {
+      animation:glyph-spread-exit 1.05s cubic-bezier(.4,0,.22,1) both !important;
+      will-change:transform,opacity;
+    }
+    .page5-sequence.is-exiting .page5-tag-motion { animation:page5-tag-out .72s ease-in both !important; }
+    .page6-static { opacity:0; }
+    .page6-sequence.is-running .page6-static { animation:page6-static-in .72s cubic-bezier(.22,.61,.36,1) .12s both; }
+    .page6-sentence { position:absolute; inset:0; opacity:1; }
+    .page6-glyph { position:absolute; opacity:0; transform:translateY(calc(32px + var(--spread-index) * clamp(7px,1.45vw,11px))) scale(1.14); pointer-events:none; }
+    .page6-sequence.is-running .page6-sentence.is-current .page6-glyph {
+      animation:glyph-rise-converge var(--glyph-duration) cubic-bezier(.16,.68,.2,1) var(--glyph-delay) both;
+      will-change:transform,opacity;
+    }
+    .page6-sequence.is-running .page6-sentence.is-complete .page6-glyph { opacity:1; transform:translateY(0) scale(1); }
+    .page6-sequence.is-exiting .page6-glyph {
+      animation:glyph-spread-exit 1.05s cubic-bezier(.4,0,.22,1) both !important;
+      will-change:transform,opacity;
+    }
+    .page6-sequence.is-exiting .page6-static { animation:page5-tag-out .72s ease-in both !important; }
+    .pre-darian-static { opacity:0; }
+    .pre-darian-sequence.is-running .pre-darian-static { animation:page6-static-in .72s cubic-bezier(.22,.61,.36,1) .12s both; }
+    .pre-darian-group { position:absolute; inset:0; opacity:1; }
+    .pre-darian-glyph { position:absolute; opacity:0; transform:translateY(calc(32px + var(--spread-index) * clamp(7px,1.45vw,11px))) scale(1.14); pointer-events:none; }
+    .pre-darian-sequence.is-running .pre-darian-group.is-current .pre-darian-glyph {
+      animation:glyph-rise-converge var(--glyph-duration) cubic-bezier(.16,.68,.2,1) var(--glyph-delay) both;
+      will-change:transform,opacity;
+    }
+    .pre-darian-sequence.is-running .pre-darian-group.is-complete .pre-darian-glyph { opacity:1; transform:translateY(0) scale(1); }
+    .pre-darian-sequence.is-exiting .pre-darian-glyph {
+      animation:glyph-spread-exit 1.05s cubic-bezier(.4,0,.22,1) both !important;
+      will-change:transform,opacity;
+    }
+    .pre-darian-sequence.is-exiting .pre-darian-static { animation:page5-tag-out .72s ease-in both !important; }
+    .page5-sequence.is-running.is-reverse .page5-tag-motion,
+    .page6-sequence.is-running.is-reverse .page6-static,
+    .pre-darian-sequence.is-running.is-reverse .pre-darian-static {
+      opacity:1;
+      animation:none !important;
+    }
+    .page5-sequence.is-running.is-reverse .sentence-glyph,
+    .page6-sequence.is-running.is-reverse .page6-glyph,
+    .pre-darian-sequence.is-running.is-reverse .pre-darian-glyph {
+      opacity:1;
+      transform:translateY(0) scale(1);
+      animation:none !important;
+      will-change:auto;
+    }
+    @keyframes overview-slide-in {
+      0% { opacity:0; transform:translateX(-7.5%); }
+      36% { opacity:.76; }
+      100% { opacity:1; transform:translateX(0); }
+    }
+    .page5-tag-motion { opacity:0; }
+    .sentence-group { position:absolute; inset:0; opacity:0; }
+    .sentence-glyph { opacity:0; transform:translateY(calc(32px + var(--spread-index) * clamp(7px,1.45vw,11px))) scale(1.14); }
+    @keyframes page5-tag-in { from{opacity:0} to{opacity:1} }
+    @keyframes sentence-rise {
+      0% { opacity:0; transform:translateY(4.8%); }
+      30% { opacity:.62; }
+      100% { opacity:1; transform:translateY(0); }
+    }
+    @keyframes glyph-rise-converge {
+      0% { opacity:0; transform:translateY(calc(32px + var(--spread-index) * clamp(7px,1.45vw,11px))) scale(1.14); }
+      14% { opacity:.76; }
+      34% { opacity:.98; }
+      100% { opacity:1; transform:translateY(0) scale(1); }
+    }
+    @keyframes glyph-spread-exit {
+      0% { opacity:1; transform:translateY(0) scale(1); }
+      52% { opacity:.84; }
+      100% { opacity:0; transform:translateY(var(--exit-shift)) scale(.98); }
+    }
+    @keyframes page5-tag-out { from{opacity:1} to{opacity:0} }
+    @keyframes page6-static-in { from{opacity:0} to{opacity:1} }
+    .cover-title { position:absolute; top:38%; left:8%; width:76%; }
+    .cover-en { position:absolute; top:50.4%; right:15%; font:.66rem/.88 Arial,sans-serif; }
+    .cover-thesis { position:absolute; top:65.1%; left:50%; width:82%; margin:0; transform:translateX(-50%); font-size:clamp(1.42rem,6.3vw,2.75rem); font-weight:300; letter-spacing:-.05em; text-align:center; }
+    .cover-thesis small,.artist-caption small { display:block; margin-top:.32rem; font:clamp(.47rem,1.8vw,.7rem)/1.12 var(--latin); letter-spacing:-.03em; text-transform:uppercase; }
+    .artist-mark { position:absolute; top:33.5%; left:50%; width:32%; max-height:29%; transform:translateX(-50%); }
+    .artist-caption { position:absolute; top:64.3%; left:50%; width:80%; margin:0; transform:translateX(-50%); font-size:clamp(1.2rem,5.5vw,2.4rem); font-weight:300; text-align:center; }
+    .vertical-title { position:absolute; top:10.3%; left:4.2%; width:27%; height:42%; object-fit:contain; object-position:left top; }
+    .vertical-thesis { position:absolute; top:51.8%; left:4.4%; margin:0; font-size:clamp(1.15rem,5vw,2.2rem); font-weight:300; letter-spacing:-.05em; }
+    .vertical-thesis small { display:block; margin-top:.18rem; font:clamp(.43rem,1.6vw,.63rem)/1 var(--latin); text-transform:uppercase; }
+    .chapter-index { position:absolute; right:6.8%; bottom:28.6%; display:flex; align-items:baseline; gap:clamp(.8rem,4vw,2rem); font-size:clamp(1.12rem,5.5vw,2.35rem); }
+    .chapter-index span { white-space:nowrap; } .chapter-index i { font-style:normal; opacity:.55; } .chapter-index small { margin-right:.18rem; font:.72em/1 var(--latin); }
+    .album-guide { position:absolute; right:9%; bottom:26.2%; display:flex; align-items:center; gap:.72rem; margin:0; font-size:clamp(1.5rem,6vw,2.7rem); font-weight:300; }
+    .album-guide::before { width:4.5rem; height:1px; background:currentColor; content:""; }
+    .album-guide small { font:clamp(.55rem,1.8vw,.75rem)/1 var(--latin); text-transform:uppercase; }
+    .vertical-copy { position:absolute; inset:13.2% 6.5% 12.5%; }
+    .vline,.track { position:absolute; top:var(--y,10%); left:var(--x); margin:0; writing-mode:vertical-rl; text-orientation:upright; font-size:var(--size,clamp(1rem,4.4vw,1.9rem)); font-weight:300; line-height:1.22; letter-spacing:.13em; white-space:nowrap; }
+    .vline.emphasis { font-size:var(--size,clamp(1.7rem,7vw,3rem)); letter-spacing:.08em; }
+    .chapter-name { position:absolute; top:14.7%; right:6.8%; margin:0; writing-mode:vertical-rl; font-size:clamp(2.1rem,9vw,4rem); font-weight:300; letter-spacing:.14em; }
+    .chapter-name small { margin-top:.5rem; font:clamp(.42rem,1.5vw,.6rem)/1 var(--latin); letter-spacing:.08em; text-transform:uppercase; }
+    .track { font-size:var(--size,clamp(1.08rem,5.2vw,2.2rem)); line-height:1.16; letter-spacing:.12em; }
+    .track small { margin-bottom:.4rem; font:clamp(.72rem,2.5vw,1rem)/1 var(--latin); letter-spacing:0; }
+    .darian-title { position:absolute; left:8%; bottom:24.5%; margin:0; writing-mode:vertical-rl; font-size:clamp(3.2rem,15vw,6rem); font-weight:300; letter-spacing:.09em; line-height:1; }
+    .darian-title::before,.darian-title::after { position:absolute; width:1.5rem; height:1.5rem; content:""; }
+    .darian-title::before { top:-.9rem; right:-.85rem; border-top:1px solid; border-right:1px solid; }
+    .darian-title::after { bottom:-.9rem; left:-.85rem; border-bottom:1px solid; border-left:1px solid; }
+    .darian-title small { margin-top:.4rem; font:.13em/1 Arial,sans-serif; letter-spacing:.04em; text-transform:uppercase; }
+    .darian-summary { position:absolute; top:45.3%; left:24%; width:25%; height:34%; margin:0; writing-mode:vertical-rl; text-orientation:mixed; color:var(--ink); font-size:clamp(1rem,4.4vw,1.9rem); font-weight:300; line-height:1.22; letter-spacing:.13em; }
+    .darian-base { z-index:1; }
+    .darian-motion-layer {
+      z-index:2;
+      opacity:0;
+      transform-origin:var(--origin-x) var(--origin-y);
+      will-change:transform,opacity;
+    }
+    .darian-main-layer { z-index:3; }
+    .darian-intro-panel.is-darian-running .darian-main-layer {
+      animation:darian-main-converge var(--motion-duration) cubic-bezier(.18,.72,.2,1) var(--motion-delay) both;
+    }
+    .darian-intro-panel.is-darian-running .darian-ghost-layer {
+      animation:darian-ghost-disappear var(--ghost-duration) cubic-bezier(.2,.62,.22,1) var(--motion-delay) both;
+    }
+    @keyframes darian-main-converge {
+      0% { opacity:0; transform:translate(var(--from-x),var(--from-y)) scale(2); }
+      12% { opacity:1; }
+      100% { opacity:1; transform:translate(0,0) scale(1); }
+    }
+    @keyframes darian-ghost-disappear {
+      0% { opacity:.18; transform:translate(var(--from-x),var(--from-y)) scale(6); }
+      42% { opacity:.13; }
+      76% { opacity:.055; }
+      100% { opacity:0; transform:translate(0,0) scale(2.1); }
+    }
+    .chorus { position:absolute; top:42.2%; left:50%; width:90%; transform:translate(-50%,-50%); text-align:center; }
+    .chorus.reveal { transform:translate(-50%,calc(-50% + 2.2rem)); }
+    .panel.is-active .chorus.reveal { transform:translate(-50%,calc(-50% + var(--drift,0px))); }
+    .panel.is-before .chorus.reveal { transform:translate(-50%,calc(-50% - 2.8rem)); }
+    .chorus h2 { margin:0; font-size:clamp(2.8rem,13.5vw,6.2rem); font-weight:300; line-height:1; letter-spacing:.03em; }
+    .chorus strong { display:block; margin-top:.18rem; font:clamp(1.8rem,7.5vw,3.5rem)/1 var(--latin); text-transform:uppercase; }
+    .continuation-lockup { position:absolute; inset:0; display:grid; place-items:center; }
+    .continuation-title { margin:0; writing-mode:vertical-rl; text-orientation:upright; font-size:clamp(2rem,8vw,4rem); font-weight:300; line-height:1; letter-spacing:.32em; }
+    .chorus p { margin:2.4rem 0 0; font-size:clamp(1.24rem,5vw,2.2rem); font-weight:300; }
+    .hook-type-scene { position:absolute; inset:0; z-index:4; overflow:hidden; container-type:inline-size; visibility:visible!important; pointer-events:none; }
+    .hook-type-word { position:absolute; top:calc(50% - 14.833cqw); left:50%; display:flex; gap:2.55cqw; margin:0; translate:-50% -50%; color:var(--ink); font:400 clamp(2.7rem,11.8cqw,5.5rem)/1 var(--serif); white-space:nowrap; transform-origin:center; will-change:transform,opacity; }
+    .hook-type-glyph { display:inline-block; opacity:0; }
+    .hook-type-dyd { position:absolute; top:calc(50% - 5.5cqw); left:50%; margin:0; translate:-50% -50%; color:var(--ink); font:400 clamp(1.5rem,5cqw,2.35rem)/1 var(--serif); letter-spacing:9vw; white-space:nowrap; opacity:0; transform-origin:center; }
+    .hook-type-cycle { position:absolute; top:52.22%; left:50%; width:6em; height:1.25em; margin-left:-3em; color:var(--ink); font-family:var(--serif); font-size:clamp(1.24rem,5vw,2.2rem); font-weight:300; line-height:1; text-align:center; white-space:nowrap; }
+    .hook-type-cycle span { position:absolute; inset:0; display:block; opacity:0; }
+    html.scroll-driven .hook-type-test { height:64svh!important; min-height:64svh!important; }
+    html.scroll-driven .darian-verse-final-panel { height:110svh!important; min-height:110svh!important; }
+    .scroll-cue { position:fixed; right:max(1rem,env(safe-area-inset-right)); bottom:max(1.25rem,env(safe-area-inset-bottom)); z-index:5; display:flex; align-items:center; gap:.55rem; font:.56rem/1 Arial,sans-serif; letter-spacing:.14em; opacity:.7; transition:opacity .3s; }
+    .scroll-cue::after { width:1.8rem; height:1px; background:currentColor; content:""; } body.at-end .scroll-cue { opacity:0; }
+    html.scroll-driven { scroll-snap-type:none; scroll-behavior:auto; }
+    html.scroll-driven .panel { height:76svh; min-height:76svh; overflow:clip; scroll-snap-align:none; scroll-snap-stop:normal; }
+    html.scroll-driven .frame { position:relative; inset:auto; top:auto; width:min(100%,750px); height:100svh; margin-inline:auto; opacity:1; }
+    html.scroll-driven .page3-sequence,
+    html.scroll-driven .page4-sequence,
+    html.scroll-driven .page5-sequence,
+    html.scroll-driven .page6-sequence,
+    html.scroll-driven .pre-darian-sequence {
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100svh;
+      margin:0;
+      visibility:visible;
+    }
+    html.scroll-driven .continuity-34 { display:none; }
+    html.scroll-driven .page3-sequence,
+    html.scroll-driven .page4-sequence,
+    html.scroll-driven .page5-sequence,
+    html.scroll-driven .page6-sequence,
+    html.scroll-driven .pre-darian-sequence { display:none; }
+    html.scroll-driven .page-ruler {
+      z-index:8;
+      opacity:1 !important;
+      transform:none !important;
+      object-position:center top;
+      clip-path:inset(0 0 92% 0);
+    }
+    html.scroll-driven .page-content-layer,
+    html.scroll-driven .local-static-content { clip-path:inset(25% 0 0 0); }
+    html.scroll-driven .natural-page-title,
+    html.scroll-driven .natural-page-brand { z-index:7; opacity:1; transform:none; }
+    html.scroll-driven .continuation-lockup { translate:0 -24svh; }
+    html.scroll-driven .scroll-cue { display:none; }
+    html.scroll-driven .darian-verse-panel .page-content-layer { opacity:0 !important; }
+    .darian-verse-sequence { position:absolute; inset:0; z-index:4; width:100%; height:100svh; pointer-events:none; }
+    html.scroll-driven .frame > .darian-verse-sequence { visibility:visible; }
+    .darian-verse-window { position:absolute; overflow:hidden; opacity:0; will-change:transform,opacity,clip-path; }
+    .darian-verse-source { position:absolute; display:block; max-width:none; object-fit:contain; object-position:center; pointer-events:none; user-select:none; }
+    html.scroll-driven .psd-overlay.reveal { opacity:1; transform:none; filter:none; transition:none; }
+    html.scroll-driven .reveal { opacity:1; transform:none; filter:none; transition:none; }
+    html.scroll-driven .cover-thesis.reveal,
+    html.scroll-driven .artist-mark.reveal,
+    html.scroll-driven .artist-caption.reveal { transform:translateX(-50%); }
+    html.scroll-driven .chorus.reveal { transform:translate(-50%,-50%); }
+    html.scroll-driven .page3-sequence,
+    html.scroll-driven .page4-sequence,
+    html.scroll-driven .page5-sequence,
+    html.scroll-driven .page6-sequence,
+    html.scroll-driven .pre-darian-sequence,
+    html.scroll-driven .continuity-34 { transition:none; }
+    html.scroll-driven .darian-motion-layer { animation:none !important; }
+    .live-artboard { position:absolute; top:50%; left:50%; width:min(100%,74.813svh); aspect-ratio:1500/2005; translate:-50% -50%; container-type:inline-size; pointer-events:none; }
+    .live-artboard .live-content-stage { pointer-events:auto; }
+    .live-artboard .brand { top:4.75%; right:6.8%; font:400 1.8cqw/.88 Arial,sans-serif; }
+    .live-artboard .section-tag { top:4.1%; left:6.5%; font-size:3.55cqw; line-height:1; }
+    .live-artboard .overview-art-en { font:400 1.8cqw/.88 Arial,sans-serif; }
+    .live-artboard .cover-en { font:1.6cqw/.88 Arial,sans-serif; }
+    .live-artboard .cover-thesis { top:64.2%; font-size:4.2cqw; line-height:1; }
+    .live-artboard .cover-thesis small,
+    .live-artboard .artist-caption small { font:1.7cqw/1.12 var(--latin); }
+    .live-artboard .artist-caption { font-size:4.2cqw; }
+    .live-artboard .vertical-thesis { font-size:4cqw; line-height:1; }
+    .live-artboard .chapter-index { gap:3cqw; font-size:3.6cqw; }
+    .live-artboard .chapter-name { font-size:5.3cqw; line-height:1; }
+    .live-artboard .chapter-name small { font:1cqw/1 var(--latin); }
+    .live-artboard .continuation-title { font-size:7.2cqw; line-height:1; letter-spacing:.32em; }
+    .absolute-glyph-line { position:absolute!important; inset:0!important; margin:0!important; writing-mode:horizontal-tb!important; font-size:4cqw!important; line-height:1!important; letter-spacing:0!important; white-space:normal!important; }
+    .absolute-glyph-line .live-glyph { position:absolute; display:flex; align-items:center; justify-content:center; font-size:4cqw; line-height:1; }
+    .absolute-glyph-line.emphasis .live-glyph { font-size:5.3cqw; }
+    .absolute-glyph-line .live-glyph.is-track-number { font-family:var(--latin); font-size:2.4cqw; }
+    .absolute-glyph-line .live-glyph.is-track-dot { font-family:var(--latin); font-size:2.1cqw; }
+    .darian-verse-panel .vertical-copy { container-type:inline-size; }
+    .verse-positioned { margin:0!important; writing-mode:vertical-rl!important; text-orientation:upright; font-size:var(--verse-size,4cqw)!important; font-weight:300; line-height:1!important; letter-spacing:var(--verse-ls,.8cqw)!important; white-space:pre!important; }
+    .live-artboard .darian-title { top:45.29%; left:7.4%; bottom:auto; width:13.7%; height:31.52%; writing-mode:horizontal-tb; font-size:0; letter-spacing:0; }
+    .live-artboard .darian-title::before { top:0; left:0; right:auto; width:3cqw; height:3cqw; border:0; border-top:1px solid; border-left:1px solid; }
+    .live-artboard .darian-title::after { right:0; bottom:0; left:auto; width:3cqw; height:3cqw; border:0; border-right:1px solid; border-bottom:1px solid; }
+    .live-artboard .darian-title small { position:absolute; top:8%; left:88%; margin:0; writing-mode:vertical-rl; font:1.35cqw/1 Arial,sans-serif; letter-spacing:.04em; }
+    .live-artboard .darian-summary { top:45.3%; left:24%; width:25%; height:34%; font-size:4cqw; line-height:1.22; letter-spacing:.13em; }
+    .frame > .darian-live-word { position:absolute; inset:0; z-index:3; margin:0; writing-mode:horizontal-tb; color:var(--ink); font-weight:300; line-height:1; pointer-events:none; }
+    .darian-glyph-plane { position:absolute; inset:0; transform-origin:center; }
+    .darian-glyph-artboard .live-glyph { position:absolute; display:flex; align-items:center; justify-content:center; font-size:10.7cqw; line-height:1; }
+    .darian-glyph-plane:nth-child(1) .live-glyph { top:47.78%; left:10.53%; width:7.67%; height:7.98%; }
+    .darian-glyph-plane:nth-child(2) .live-glyph { top:57.71%; left:10.60%; width:7.53%; height:7.08%; }
+    .darian-glyph-plane:nth-child(3) .live-glyph { top:66.38%; left:10.60%; width:7.53%; height:8.08%; }
+    @media (min-width:751px) { .frame { background:rgba(15,31,11,.025); } .vline,.track { letter-spacing:.1em; } }
+    @media (prefers-reduced-motion:reduce) { html{scroll-behavior:auto}.reveal{transition:none}.overview-motion,.sentence-group,.sentence-glyph,.page5-tag-motion,.page6-static,.page6-sentence,.page6-glyph,.pre-darian-static,.pre-darian-group,.pre-darian-glyph{opacity:1;scale:1;transform:none;animation:none!important}.film video{display:none}.film{background:url("../scene-assets/grass-still.jpg") center/cover no-repeat} }
+    html.swiper-pilot { height:100%; overflow:hidden; scroll-snap-type:none; }
+    html.swiper-pilot body { height:100%; overflow:hidden; overscroll-behavior:none; }
+    html.swiper-pilot main.swiper { position:relative; width:100%; height:100svh; overflow:hidden; }
+    html.swiper-pilot .swiper-wrapper { width:100%; height:100%; }
+    html.swiper-pilot .panel.swiper-slide { width:100%; min-height:100%; height:100%; flex:0 0 100%; overflow:hidden; scroll-snap-align:none; scroll-snap-stop:normal; }
+    html.swiper-pilot .panel .frame { --visibility:1; }
+    html.swiper-pilot .panel:not(.is-near) { visibility:hidden; }
+    html.swiper-pilot .scroll-cue { display:none; }
+    html.isolate-motion .film video { display:block!important; }
+    html.single-video-pilot .film { background-position:center; background-size:cover; }
+    html.single-video-pilot .film .film-grass { display:block!important; visibility:visible!important; opacity:1!important; transition:opacity .38s cubic-bezier(.22,.61,.36,1); }
+    html.single-video-pilot .film.is-switching .film-grass { opacity:0!important; }
+    html.single-video-pilot .film .film-single,
+    html.single-video-pilot .film .film-freeze { display:none!important; }
+  </style>
+</head>
+<body>
+  <div class="entry-gate" aria-label="页面载入">
+    <div class="frame">
+      <div class="art-title-plane cover-art" role="img" aria-label="丰饶之海">
+        <img class="cover-art-left entry-critical-image" src="../scene-assets/psd-overlays/01.png" alt="" aria-hidden="true">
+        <img class="cover-art-right entry-critical-image" src="../scene-assets/psd-overlays/01.png" alt="" aria-hidden="true">
+      </div>
+      <div class="cover-en">THE SEA<br>OF FERTILITY</div>
+      <h1 class="cover-thesis">在匮乏中抵达丰饶<small>ARRIVING AT ABUNDANCE<br>THROUGH SCARCITY</small></h1>
+      <button class="entry-action" type="button" aria-disabled="true">载入中</button>
+    </div>
+  </div>
+  <div class="film" aria-hidden="true">
+    <video class="film-grass" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="../scene-assets/grass-still.jpg" data-src-mobile="../scene-assets/video-hq15/grass-15s-1080p-formal.mp4" data-src-desktop="../scene-assets/video-hq15/grass-15s-1080p-formal.mp4"></video>
+    <video class="film-single" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="../scene-assets/building-still.jpg" data-src-mobile="../scene-assets/video-hq15/building-15s-1080p-formal.mp4" data-src-desktop="../scene-assets/video-hq15/building-15s-1080p-formal.mp4"></video>
+  </div>
+  <audio class="album-audio" preload="none" loop src="../scene-assets/album-intro.mp3"></audio>
+  <audio class="darian-audio" preload="none" loop src="../scene-assets/darian.mp3"></audio>
+  <main>
+    <section class="panel" aria-label="丰饶之海封面"><div class="frame">
+      <div class="art-title-plane cover-art" role="img" aria-label="丰饶之海">
+        <img class="cover-art-left" src="../scene-assets/psd-overlays/01.png" alt="" aria-hidden="true">
+        <img class="cover-art-right" src="../scene-assets/psd-overlays/01.png" alt="" aria-hidden="true">
+      </div>
+      <div class="cover-en reveal" style="--delay:.12s">THE SEA<br>OF FERTILITY</div>
+      <h1 class="cover-thesis reveal" style="--delay:.2s">在匮乏中抵达丰饶<small>ARRIVING AT ABUNDANCE<br>THROUGH SCARCITY</small></h1>
+    </div></section>
+    <section class="panel" aria-label="李奥"><div class="frame">
+      <img class="title-image artist-mark reveal" src="../scene-assets/home-artist.png" alt="李奥">
+      <p class="artist-caption reveal" style="--delay:.15s">个人首张全长概念专辑<small>DEBUT FULL-LENGTH<br>CONCEPT ALBUM</small></p>
+    </div></section>
+    <section class="panel" aria-label="三章总览"><div class="frame">
+      <div class="brand">THE SEA<br>OF FERTILITY</div>
+      <div class="art-title-plane overview-art" role="img" aria-label="丰饶之海">
+        <img class="overview-art-top" src="../scene-assets/psd-overlays/shared-title-34.png" alt="" aria-hidden="true">
+        <img class="overview-art-middle-left" src="../scene-assets/psd-overlays/shared-title-34.png" alt="" aria-hidden="true">
+        <img class="overview-art-middle-right" src="../scene-assets/psd-overlays/shared-title-34.png" alt="" aria-hidden="true">
+        <img class="overview-art-bottom" src="../scene-assets/psd-overlays/shared-title-34.png" alt="" aria-hidden="true">
+      </div>
+      <div class="overview-art-en">THE SEA<br>OF FERTILITY</div>
+      <p class="vertical-thesis reveal" style="--delay:.12s">在匮乏中抵达丰饶<small>ARRIVING AT ABUNDANCE<br>THROUGH SCARCITY</small></p>
+      <div class="chapter-index reveal" style="--delay:.22s"><span><small>01</small>出发</span><i>｜</i><span><small>02</small>发现</span><i>｜</i><span><small>03</small>融解</span></div>
+    </div></section>
+    <section class="panel" aria-label="专辑简介第一段"><div class="frame">
+      <p class="section-tag">「专辑简介」</p><div class="brand">THE SEA<br>OF FERTILITY</div><div class="vertical-copy">
+        <p class="vline reveal" style="--x:88%;--y:8%;--delay:.02s">人类曾把未抵达的月球</p>
+        <p class="vline reveal" style="--x:71%;--y:26%;--delay:.08s">想象成一片汪洋，</p>
+        <p class="vline reveal" style="--x:54%;--y:28%;--delay:.14s">抵达后却发现</p>
+        <p class="vline emphasis reveal" style="--x:35%;--y:18%;--delay:.2s">「不过一片贫瘠。」</p>
+        <p class="vline reveal" style="--x:18%;--y:39%;--delay:.26s">我们也常如此</p>
+        <p class="vline reveal" style="--x:1%;--y:29%;--delay:.32s">想象人生的远方。</p>
+      </div>
+    </div></section>
+    <section class="panel" aria-label="专辑简介第二段"><div class="frame">
+      <p class="section-tag">「专辑简介」</p><div class="brand">THE SEA<br>OF FERTILITY</div><div class="vertical-copy">
+        <p class="vline reveal" style="--x:88%;--y:34%;--delay:.02s">当离开故乡，</p>
+        <p class="vline reveal" style="--x:70%;--y:16%;--delay:.08s">进入一个承诺丰饶的时代；</p>
+        <p class="vline reveal" style="--x:52%;--y:28%;--delay:.14s">最后发现人真正要学的，</p>
+        <p class="vline emphasis reveal" style="--x:35%;--y:31%;--delay:.2s">「不是抵达，」</p>
+        <p class="vline reveal" style="--x:18%;--y:13%;--delay:.26s">而是在失去、幻象和变化中，</p>
+        <p class="vline reveal" style="--x:1%;--y:28%;--delay:.32s">仍保有感受、爱与回答的能力。</p>
+      </div>
+    </div></section>
+    <section class="panel" aria-label="专辑简介第三段"><div class="frame">
+      <p class="section-tag">「专辑简介」</p><div class="brand">THE SEA<br>OF FERTILITY</div><div class="vertical-copy">
+        <p class="vline reveal" style="--x:89%;--y:10%;--delay:.02s">专辑内部暗藏了一条</p>
+        <p class="vline reveal" style="--x:73%;--y:22%;--delay:.07s">由《太空流民#123》系列</p>
+        <p class="vline reveal" style="--x:58%;--y:15%;--delay:.12s">串联起来的故事线，</p>
+        <p class="vline reveal" style="--x:43%;--y:8%;--delay:.17s">它讲述的并非关于星际旅行，</p>
+        <p class="vline emphasis reveal" style="--x:27%;--y:25%;--delay:.22s">「而是一场向内的远征。」</p>
+        <p class="vline reveal" style="--x:12%;--y:15%;--delay:.27s">通过这三首歌把专辑分为三个篇章，</p>
+        <p class="vline reveal" style="--x:-3%;--y:31%;--delay:.32s">曲目由此排开。</p>
+      </div>
+    </div></section>
+
+    <section class="panel" aria-label="第一章 出发"><div class="frame">
+      <p class="section-tag">「第一章」</p><div class="brand">THE SEA<br>OF FERTILITY</div><h2 class="chapter-name reveal">「出发」<small>SET OUT</small></h2>
+      <p class="track reveal" style="--x:63%;--y:19%;--delay:.06s"><small>01 ·</small>太空流民#1 出发</p>
+      <p class="track reveal" style="--x:43%;--y:29%;--delay:.12s"><small>02 ·</small>达里安</p>
+      <p class="track reveal" style="--x:23%;--y:19%;--delay:.18s"><small>03 ·</small>一天</p>
+      <p class="track reveal" style="--x:6%;--y:28%;--delay:.24s"><small>04 ·</small>奔跑时的几要素</p>
+    </div></section>
+    <section class="panel" aria-label="第二章 发现"><div class="frame">
+      <p class="section-tag">「第二章」</p><div class="brand">THE SEA<br>OF FERTILITY</div><h2 class="chapter-name reveal">「发现」<small>FIND OUT</small></h2>
+      <p class="track reveal" style="--x:69%;--y:20%;--delay:.04s"><small>05 ·</small>太空流民#2 发现</p>
+      <p class="track reveal" style="--x:55%;--y:28%;--delay:.08s"><small>06 ·</small>石滩</p>
+      <p class="track reveal" style="--x:41%;--y:34%;--delay:.12s"><small>07 ·</small>云景路</p>
+      <p class="track reveal" style="--x:27%;--y:27%;--delay:.16s"><small>08 ·</small>落水狗</p>
+      <p class="track reveal" style="--x:13%;--y:20%;--delay:.2s"><small>09 ·</small>观看坍塌的几种姿势</p>
+      <p class="track reveal" style="--x:1%;--y:36%;--delay:.24s"><small>10 ·</small>Limbo</p>
+    </div></section>
+    <section class="panel" aria-label="第三章 融解"><div class="frame">
+      <p class="section-tag">「第三章」</p><div class="brand">THE SEA<br>OF FERTILITY</div><h2 class="chapter-name reveal">「融解」<small>FADE OUT</small></h2>
+      <p class="track reveal" style="--x:63%;--y:20%;--delay:.06s"><small>11 ·</small>太空流民#3 融解</p>
+      <p class="track reveal" style="--x:43%;--y:34%;--delay:.12s"><small>12 ·</small>矛盾雨</p>
+      <p class="track reveal" style="--x:23%;--y:20%;--delay:.18s"><small>13 ·</small>丰饶之海</p>
+      <p class="track reveal" style="--x:6%;--y:36%;--delay:.24s"><small>14 ·</small>是的</p>
+    </div></section>
+
+    <section class="panel darian-intro-panel" aria-label="首发单曲 达里安"><div class="frame">
+      <p class="section-tag">「首发单曲」</p><div class="brand">THE SEA<br>OF FERTILITY</div><h2 class="darian-title reveal">「达里安」<small>DARIAN</small></h2><p class="darian-summary reveal">地里的泥、工地的灰、厂房里的铁屑，最后都长进了人的骨头。</p>
+    </div></section>
+    <section class="panel" aria-label="达里安歌词第一段"><div class="frame">
+      <p class="section-tag">「首发单曲」</p><div class="brand">THE SEA<br>OF FERTILITY</div><div class="vertical-copy">
+        <p class="vline reveal" style="--x:88%;--y:16%;--delay:.02s">劳作后收起　他耕地的犁</p>
+        <p class="vline reveal" style="--x:73%;--y:8%;--delay:.07s">叫他怎能忘记　土地教的道理</p>
+        <p class="vline reveal" style="--x:58%;--y:19%;--delay:.12s">矛盾和洗礼　无需来临</p>
+        <p class="vline reveal" style="--x:43%;--y:25%;--delay:.17s">一贯随形如影　教他献祭自己</p>
+        <p class="vline reveal" style="--x:28%;--y:6%;--delay:.22s">山谷在夜里唱枯萎和新生的歌剧</p>
+        <p class="vline reveal" style="--x:13%;--y:13%;--delay:.27s">农夫在田野写劳苦和希望的诗句</p>
+        <p class="vline reveal" style="--x:-2%;--y:18%;--delay:.32s">WU　生活扣进肩里　用汗水　把辛劳洗净</p>
+      </div>
+    </div></section>
+    <section class="panel" aria-label="达里安 勿亡"><div class="frame"><p class="section-tag">「首发单曲」</p><div class="brand">THE SEA<br>OF FERTILITY</div><div class="chorus reveal"><h2>达里安</h2><strong>DON’T YOU DIE</strong><p>勿亡</p></div></div></section>
+    <section class="panel" aria-label="达里安 坚持下去"><div class="frame"><p class="section-tag">「首发单曲」</p><div class="brand">THE SEA<br>OF FERTILITY</div><div class="chorus reveal"><h2>达里安</h2><strong>DON’T YOU DIE</strong><p>坚持下去</p></div></div></section>
+    <section class="panel" aria-label="达里安 不要放弃"><div class="frame"><p class="section-tag">「首发单曲」</p><div class="brand">THE SEA<br>OF FERTILITY</div><div class="chorus reveal"><h2>达里安</h2><strong>DON’T YOU DIE</strong><p>不要放弃</p></div></div></section>
+    <section class="panel" aria-label="达里安 活着"><div class="frame"><p class="section-tag">「首发单曲」</p><div class="brand">THE SEA<br>OF FERTILITY</div><div class="chorus reveal"><h2>达里安</h2><strong>DON’T YOU DIE</strong><p>活着</p></div></div></section>
+    <section class="panel" aria-label="达里安歌词第二段"><div class="frame">
+      <p class="section-tag">「首发单曲」</p><div class="brand">THE SEA<br>OF FERTILITY</div><div class="vertical-copy">
+        <p class="vline reveal" style="--x:88%;--y:15%;--delay:.02s">文明的远景　他优先出局</p>
+        <p class="vline reveal" style="--x:73%;--y:6%;--delay:.07s">功成便隐踪迹　等候新的泡影</p>
+        <p class="vline reveal" style="--x:58%;--y:25%;--delay:.12s">车间的铆钉　铆住手臂</p>
+        <p class="vline reveal" style="--x:43%;--y:20%;--delay:.17s">无心再看风景　困住他在原地</p>
+        <p class="vline reveal" style="--x:28%;--y:7%;--delay:.22s">城市里广厦多眩目令他遥不可及</p>
+        <p class="vline reveal" style="--x:13%;--y:17%;--delay:.27s">走出了山里又走入了另一座山林</p>
+        <p class="vline reveal" style="--x:-2%;--y:6%;--delay:.32s">Wu　人们丢掉自己　过一阵　又找回自己</p>
+      </div>
+    </div></section>
+    <section class="panel continuation-panel" aria-label="未完待续"><div class="frame">
+      <div class="continuation-lockup"><h2 class="continuation-title">未完待续</h2></div>
+    </div></section>
+  </main>
+  <div class="scroll-cue" aria-hidden="true">SCROLL</div>
+  <script src="../scene-assets/vendor/gsap.min.js"></script>
+  <script src="../scene-assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="../scene-assets/psd-overlays/pre-darian-motion-data.js"></script>
+  <script>
+    (()=>{
+      if(!window.gsap||!window.ScrollTrigger)return;
+      gsap.registerPlugin(ScrollTrigger);
+      ScrollTrigger.config({ignoreMobileResize:true});
+      gsap.defaults({overwrite:'auto'});
+
+      const main=document.querySelector('main');
+      const finalDarian=[...main.querySelectorAll('.panel')].find(panel=>panel.getAttribute('aria-label')==='达里安歌词第二段');
+      const chapterPanels=['第一章 出发','第二章 发现','第三章 融解'].map(label=>
+        [...main.querySelectorAll('.panel')].find(panel=>panel.getAttribute('aria-label')===label)
+      );
+      let chapterAnchor=finalDarian;
+      chapterPanels.forEach(panel=>{chapterAnchor.after(panel);chapterAnchor=panel});
+
+      const scenePanels=[...document.querySelectorAll('.panel')];
+      if('IntersectionObserver' in window){
+        const proximity=new IntersectionObserver(entries=>entries.forEach(entry=>entry.target.classList.toggle('is-near',entry.isIntersecting)),{rootMargin:'110% 0px 110% 0px'});
+        scenePanels.forEach(panel=>proximity.observe(panel));
+      }else{
+        scenePanels.forEach(panel=>panel.classList.add('is-near'));
+      }
+      scenePanels.forEach(panel=>{
+        const frame=panel.querySelector('.frame');
+        const artboard=document.createElement('div');
+        artboard.className='live-artboard';
+        [...frame.children].forEach(node=>artboard.append(node));
+        frame.append(artboard);
+      });
+      const panelCrossing=panel=>{
+        const marker=panel.querySelector('.section-tag,.brand');
+        if(!marker)return 46;
+        const center=marker.offsetTop+marker.offsetHeight/2;
+        return 50-center/(panel.offsetHeight||innerHeight||1)*100;
+      };
+      const makeScrollTimeline=panel=>{
+        const panelIndex=scenePanels.indexOf(panel);
+        const nextPanel=scenePanels[panelIndex+1];
+        return gsap.timeline({
+          scrollTrigger:{
+            trigger:panel,
+            endTrigger:nextPanel||panel,
+            start:()=>`top ${panelCrossing(panel)}%`,
+            end:nextPanel?()=>`top ${panelCrossing(nextPanel)}%`:'bottom bottom',
+            scrub:.34,
+            invalidateOnRefresh:true
+          }
+        }).to({}, {duration:1});
+      };
+
+      const grassVideo=document.querySelector('.film-grass');
+      const singleVideo=document.querySelector('.film-single');
+      const film=document.querySelector('.film');
+      const staticDiagnostic=document.documentElement.classList.contains('diag-static');
+      const useWeChatFreeze=false;
+      const freezeGrass=useWeChatFreeze?document.createElement('canvas'):null;
+      const freezeSingle=useWeChatFreeze?document.createElement('canvas'):null;
+      if(useWeChatFreeze){
+        freezeGrass.className='film-freeze film-freeze-grass';
+        freezeSingle.className='film-freeze film-freeze-single';
+        film.append(freezeGrass,freezeSingle);
+      }
+      const chooseVideoSource=video=>{
+        const connection=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+        const constrained=connection?.saveData||['slow-2g','2g','3g'].includes(connection?.effectiveType);
+        return video.dataset[constrained||matchMedia('(max-width:750px)').matches?'srcMobile':'srcDesktop'];
+      };
+      const attachVideoSource=(video,preload)=>{
+        if(video.src)return;
+        video.src=chooseVideoSource(video);
+        video.preload=preload;
+        video.load();
+      };
+      let grassVideoReady=false;
+      let entryStarted=false;
+      const ensureGrassVideo=()=>{
+        if(staticDiagnostic||grassVideoReady)return;
+        attachVideoSource(grassVideo,'metadata');
+        grassVideoReady=true;
+      };
+      let singleVideoReady=false;
+      const ensureSingleVideo=()=>{
+        if(staticDiagnostic||singleVideoReady)return;
+        attachVideoSource(singleVideo,'auto');
+        singleVideoReady=true;
+      };
+      const albumAudio=document.querySelector('.album-audio');
+      const darianAudio=document.querySelector('.darian-audio');
+      const mediaPlay=media=>{
+        try{
+          const attempt=media.play();
+          return attempt?.then?attempt:Promise.resolve();
+        }catch(error){
+          return Promise.reject(error);
+        }
+      };
+      let audioUnlocked=false;
+      let currentAudio=null;
+      let pendingAudio=null;
+      let pendingAudioPromise=null;
+      let audioTransitionId=0;
+      let darianAudioFailed=false;
+      const activateAudio=audio=>{
+        if(!audioUnlocked)return Promise.resolve(false);
+        if(pendingAudio&&pendingAudio!==audio){
+          audioTransitionId++;
+          if(pendingAudio!==currentAudio){pendingAudio.pause();pendingAudio.volume=0}
+          pendingAudio=null;
+          pendingAudioPromise=null;
+          gsap.killTweensOf([albumAudio,darianAudio]);
+        }
+        if(currentAudio===audio){
+          if(!audio.paused){
+            if(audio.volume<.999)gsap.to(audio,{volume:1,duration:.28,ease:'power1.out'});
+            return Promise.resolve(true);
+          }
+        }
+        if(pendingAudio===audio&&pendingAudioPromise)return pendingAudioPromise;
+        const transitionId=++audioTransitionId;
+        gsap.killTweensOf([albumAudio,darianAudio]);
+        const outgoing=currentAudio&&currentAudio!==audio?currentAudio:null;
+        pendingAudio=audio;
+        audio.volume=0;
+        const transition=mediaPlay(audio).then(()=>{
+          if(transitionId!==audioTransitionId){
+            if(audio!==currentAudio){audio.pause();audio.volume=0}
+            return false;
+          }
+          pendingAudio=null;
+          pendingAudioPromise=null;
+          currentAudio=audio;
+          gsap.to(audio,{volume:1,duration:.9,ease:'power1.inOut'});
+          if(outgoing)gsap.to(outgoing,{volume:0,duration:.9,ease:'power1.inOut',onComplete:()=>{
+            if(currentAudio!==outgoing)outgoing.pause();
+          }});
+          return true;
+        }).catch(()=>{
+          if(transitionId===audioTransitionId){
+            pendingAudio=null;
+            pendingAudioPromise=null;
+            audio.pause();
+            audio.volume=0;
+            if(outgoing){
+              currentAudio=outgoing;
+              outgoing.volume=1;
+              if(outgoing.paused)mediaPlay(outgoing).catch(()=>{});
+            }else{
+              currentAudio=null;
+            }
+          }
+          return false;
+        });
+        pendingAudioPromise=transition;
+        return transition;
+      };
+      gsap.set(singleVideo,{autoAlpha:0});
+      ScrollTrigger.create({
+        trigger:scenePanels[4],
+        start:'top 100%',
+        onEnter:ensureSingleVideo,
+        onEnterBack:ensureSingleVideo
+      });
+      let singleVideoTl=gsap.timeline({
+        scrollTrigger:{
+          trigger:scenePanels[6],
+          start:'top 18%',
+          end:'top -2%',
+          scrub:.32,
+          invalidateOnRefresh:true
+        }
+      }).to({}, {duration:1});
+      singleVideoTl.to(grassVideo,{autoAlpha:0,duration:1,ease:'none'},0)
+        .fromTo(singleVideo,{autoAlpha:0},{autoAlpha:1,duration:1,ease:'none'},0);
+      let weChatFrozen=false;
+      let weChatFreezeTimer=0;
+      let lastFreezeCapture=0;
+      const drawVideoFreeze=(video,canvas,fallback)=>{
+        const width=Math.min(720,Math.max(390,Math.round(innerWidth*1.5)));
+        const height=Math.max(1,Math.round(width*innerHeight/innerWidth));
+        canvas.width=width;
+        canvas.height=height;
+        canvas.style.background=`url("${fallback}") center/cover no-repeat`;
+        if(video.readyState<2||!video.videoWidth||!video.videoHeight)return;
+        const context=canvas.getContext('2d',{alpha:false});
+        const sourceRatio=video.videoWidth/video.videoHeight;
+        const targetRatio=width/height;
+        let sx=0,sy=0,sw=video.videoWidth,sh=video.videoHeight;
+        if(sourceRatio>targetRatio){sw=sh*targetRatio;sx=(video.videoWidth-sw)/2}
+        else{sh=sw/targetRatio;sy=(video.videoHeight-sh)/2}
+        context.drawImage(video,sx,sy,sw,sh,0,0,width,height);
+        canvas.style.background='none';
+      };
+      const refreshWeChatFreezeFrames=()=>{
+        if(!useWeChatFreeze||weChatFrozen)return;
+        const now=performance.now();
+        if(now-lastFreezeCapture<1200)return;
+        lastFreezeCapture=now;
+        drawVideoFreeze(grassVideo,freezeGrass,'../scene-assets/grass-still.jpg');
+        drawVideoFreeze(singleVideo,freezeSingle,'../scene-assets/building-still.jpg');
+      };
+      if(useWeChatFreeze){
+        grassVideo.addEventListener('playing',()=>{lastFreezeCapture=0;refreshWeChatFreezeFrames()});
+        grassVideo.addEventListener('timeupdate',refreshWeChatFreezeFrames);
+        singleVideo.addEventListener('playing',()=>{lastFreezeCapture=0;refreshWeChatFreezeFrames()});
+        singleVideo.addEventListener('timeupdate',refreshWeChatFreezeFrames);
+      }
+      const updateWeChatFreezeBlend=()=>{
+        if(!weChatFrozen)return;
+        const progress=singleVideoTl.progress();
+        freezeGrass.style.opacity=1-progress;
+        freezeSingle.style.opacity=progress;
+      };
+      const beginWeChatFreeze=()=>{
+        if(!useWeChatFreeze)return;
+        clearTimeout(weChatFreezeTimer);
+        if(!weChatFrozen){
+          if(!freezeGrass.width)drawVideoFreeze(grassVideo,freezeGrass,'../scene-assets/grass-still.jpg');
+          if(!freezeSingle.width)drawVideoFreeze(singleVideo,freezeSingle,'../scene-assets/building-still.jpg');
+          freezeGrass.style.display='block';
+          freezeSingle.style.display='block';
+          grassVideo.style.display='none';
+          singleVideo.style.display='none';
+          grassVideo.pause();
+          singleVideo.pause();
+          weChatFrozen=true;
+        }
+        updateWeChatFreezeBlend();
+        weChatFreezeTimer=setTimeout(()=>{
+          weChatFrozen=false;
+          grassVideo.style.display='block';
+          singleVideo.style.display='block';
+          freezeGrass.style.display='none';
+          freezeSingle.style.display='none';
+          syncVideoPlayback();
+        },150);
+      };
+      const wantsDarianMedia=()=>scrollY>=singleVideoTl.scrollTrigger.start;
+      const syncVideoPlayback=()=>{
+        if(staticDiagnostic)return;
+        if(!entryStarted){
+          grassVideo.pause();
+          if(singleVideoReady)singleVideo.pause();
+          return;
+        }
+        if(weChatFrozen){
+          updateWeChatFreezeBlend();
+          return;
+        }
+        if(document.visibilityState!=='visible'){
+          grassVideo.pause();
+          if(singleVideoReady)singleVideo.pause();
+          return;
+        }
+        const progress=singleVideoTl.progress();
+        if(progress<.995){
+          ensureGrassVideo();
+          if(grassVideo.paused)mediaPlay(grassVideo).catch(()=>{});
+        }else if(!grassVideo.paused){
+          grassVideo.pause();
+        }
+        if(singleVideoReady){
+          if(progress>.005){
+            if(singleVideo.paused)mediaPlay(singleVideo).catch(()=>{});
+          }else if(!singleVideo.paused){
+            singleVideo.pause();
+          }
+        }
+      };
+      singleVideoTl.eventCallback('onUpdate',syncVideoPlayback);
+      const syncMediaState=()=>{
+        if(scrollY>=scenePanels[4].offsetTop-(innerHeight||1))ensureSingleVideo();
+        syncVideoPlayback();
+        if(audioUnlocked)activateAudio(wantsDarianMedia()&&!darianAudioFailed?darianAudio:albumAudio);
+      };
+      let mediaSyncFrame=0;
+      const scheduleMediaSync=()=>{
+        if(mediaSyncFrame)return;
+        mediaSyncFrame=requestAnimationFrame(()=>{mediaSyncFrame=0;syncMediaState()});
+      };
+      addEventListener('scroll',beginWeChatFreeze,{passive:true});
+      addEventListener('scroll',scheduleMediaSync,{passive:true});
+      addEventListener('scrollend',()=>{ScrollTrigger.update();syncMediaState()},{passive:true});
+      addEventListener('fengrao:start',()=>{entryStarted=true;ensureGrassVideo();syncVideoPlayback()},{once:true});
+
+      const makeStage=(panel,selectors)=>{
+        const frame=panel.querySelector('.frame');
+        const sourceArtboard=frame.querySelector(':scope > .live-artboard');
+        const stage=document.createElement('div');
+        stage.className='live-content-stage';
+        const stageArtboard=document.createElement('div');
+        stageArtboard.className='live-artboard';
+        selectors.flatMap(selector=>[...sourceArtboard.querySelectorAll(`:scope > ${selector}`)]).forEach(node=>stageArtboard.append(node));
+        stage.append(stageArtboard);
+        frame.append(stage);
+        return stage;
+      };
+      const addBasicScene=(panel,content)=>{
+        const tl=makeScrollTimeline(panel);
+        tl.fromTo(content,{autoAlpha:0,yPercent:9,scale:1.045},{autoAlpha:1,yPercent:0,scale:1,duration:.36,ease:'power2.out'},.02)
+          .to(content,{autoAlpha:1,yPercent:0,scale:1,duration:.16,ease:'none'},.38)
+          .to(content,{autoAlpha:0,yPercent:-9,scale:.975,duration:.40,ease:'power2.in'},.56);
+      };
+      addBasicScene(scenePanels[0],makeStage(scenePanels[0],['.cover-art','.cover-en','.cover-thesis']));
+      addBasicScene(scenePanels[1],makeStage(scenePanels[1],['.artist-mark','.artist-caption']));
+      const continuationPanel=scenePanels.at(-1);
+      const continuationStage=makeStage(continuationPanel,['.continuation-lockup']);
+      const continuationTl=makeScrollTimeline(continuationPanel);
+      continuationTl.fromTo(continuationStage,{autoAlpha:0,yPercent:8,scale:1.035},{autoAlpha:1,yPercent:0,scale:1,duration:.52,ease:'power2.out'},.02)
+        .to(continuationStage,{autoAlpha:1,yPercent:0,scale:1,duration:.46,ease:'none'},.54);
+
+      const page3Tl=makeScrollTimeline(scenePanels[2]);
+      const page3Thesis=scenePanels[2].querySelector('.vertical-thesis');
+      const chapterChildren=[...scenePanels[2].querySelector('.chapter-index').children];
+      const chapterUnits=[[chapterChildren[0],chapterChildren[1]],[chapterChildren[2],chapterChildren[3]],[chapterChildren[4]]];
+      page3Tl.fromTo(page3Thesis,{autoAlpha:0,xPercent:-15.5,scale:1.08},{autoAlpha:1,xPercent:0,scale:1,duration:.34,ease:'power2.out'},.03);
+      chapterUnits.forEach((unit,index)=>page3Tl.fromTo(unit,
+        {autoAlpha:0,xPercent:-14,scale:1.055},
+        {autoAlpha:1,xPercent:0,scale:1,duration:.36,ease:'power2.out'},
+        .13+index*.055
+      ));
+      page3Tl.to(page3Thesis,{autoAlpha:0,xPercent:9.5,scale:.97,duration:.38,ease:'power2.in'},.60);
+      chapterUnits.forEach((unit,index)=>page3Tl.to(unit,
+        {autoAlpha:0,xPercent:10,scale:.975,duration:.38,ease:'power2.in'},
+        .60+index*.018
+      ));
+
+      const splitGlyphs=element=>{
+        if(element.matches('.track')){
+          const small=element.querySelector('small');
+          const number=small.textContent.match(/\d+/)?.[0]||'';
+          small.replaceChildren();
+          const numberGlyph=document.createElement('span');
+          numberGlyph.className='live-glyph is-track-number';
+          numberGlyph.textContent=number;
+          const dotGlyph=document.createElement('span');
+          dotGlyph.className='live-glyph is-track-dot';
+          dotGlyph.textContent='·';
+          small.append(numberGlyph,dotGlyph);
+        }
+        const walker=document.createTreeWalker(element,NodeFilter.SHOW_TEXT);
+        const textNodes=[];
+        while(walker.nextNode()){
+          if(!walker.currentNode.parentElement.closest('.live-glyph'))textNodes.push(walker.currentNode);
+        }
+        textNodes.forEach(node=>{
+          const fragment=document.createDocumentFragment();
+          const characters=[...node.nodeValue];
+          for(let index=0;index<characters.length;index++){
+            let character=characters[index];
+            if(character==='。'&&characters[index+1]==='」'){
+              character+='」';
+              index++;
+            }else if(character==='#'&&/\d/.test(characters[index+1]||'')){
+              while(/\d/.test(characters[index+1]||''))character+=characters[++index];
+            }else if(character==='L'&&characters[index+1]==='i'){
+              character+='i';
+              index++;
+            }
+            const glyph=document.createElement('span');
+            glyph.className='live-glyph';
+            glyph.textContent=character;
+            fragment.append(glyph);
+          }
+          node.replaceWith(fragment);
+        });
+        return [...element.querySelectorAll('.live-glyph')];
+      };
+      const layoutGlyphLine=(line,boxes)=>{
+        line.classList.add('absolute-glyph-line');
+        const glyphs=[...line.querySelectorAll('.live-glyph')].filter(glyph=>glyph.textContent.trim());
+        glyphs.forEach((glyph,index)=>{
+          const box=boxes[index];
+          if(!box)return;
+          Object.assign(glyph.style,{
+            left:`${box[0]/15}%`,top:`${box[1]/20.05}%`,
+            width:`${box[2]/15}%`,height:`${box[3]/20.05}%`
+          });
+        });
+      };
+      const page4Centers=[
+        [[1320,549.5],[1320,621.5],[1320,693],[1320,765],[1320,837],[1320,909],[1320,981],[1320,1053],[1316.5,1128],[1320,1197]],
+        [[1104.5,823],[1105,896],[1105,968.5],[1105,1038.5],[1105,1112],[1105.5,1184.5],[1105,1256],[1094,1353]],
+        [[891,677],[891,749],[891,821.5],[890,893],[891,965.5],[891,1039]],
+        [[604,495],[645,558],[645,647],[645.5,738.5],[645.5,834],[645.5,927],[645,1021],[657,1147]],
+        [[398,823.5],[397,895],[398,966.5],[397,1039],[396.5,1111],[398,1183.5]],
+        [[183.5,676],[184,749],[184,821.5],[184,892],[184,965],[184,1037.5],[184,1109.5],[174,1200.5]]
+      ];
+      const page4Boxes=page4Centers.map((centers,groupIndex)=>centers.map(([x,y])=>{
+        const emphasis=groupIndex===3,size=emphasis?80:60,width=emphasis?62:44;
+        return [x-width/2,y-size/2,width,size];
+      }));
+      const page5Boxes=[
+        [[1300,669,37,60],[1299,741,43,60],[1298,818,44,55],[1298,885,44,61],[1299,956,40,61],[1303,1073,12,22]],
+        [[1083,430,44,60],[1083,502,45,60],[1083,599,44,7],[1083,646,44,61],[1083,722,45,56],[1083,791,45,59],[1083,862,44,60],[1083,934,44,60],[1085,1006,40,60],[1085,1079,43,59],[1083,1150,44,60],[1088,1241,12,47]],
+        [[869,559,44,57],[869,627,44,61],[869,699,44,61],[869,775,44,56],[869,844,44,59],[870,915,43,61],[869,993,44,51],[869,1063,44,57],[869,1131,44,61],[871,1203,40,60],[874,1319,12,22]],
+        [[592,632,26,26],[615,669,62,78],[615,760,62,80],[615,848,62,86],[616,942,61,84],[623,1098,76,27],[623,1125,76,23]],
+        [[377,435,44,54],[377,505,44,56],[377,573,44,60],[377,645,44,60],[377,717,44,60],[380,828,17,22],[377,861,42,60],[377,933,44,60],[377,1005,41,60],[377,1077,44,61],[377,1149,44,60],[380,1221,38,60],[382,1337,12,22]],
+        [[162,555,43,61],[162,627,44,61],[162,699,44,60],[162,771,44,58],[162,843,44,61],[165,954,17,22],[162,987,44,61],[162,1059,43,61],[165,1136,38,55],[162,1203,44,60],[164,1275,40,60],[162,1347,44,60],[162,1419,40,60],[163,1530,22,21]]
+      ];
+      const layoutBoxes={3:page4Boxes,4:page5Boxes,5:window.preDarianMotionData['06'],13:window.preDarianMotionData['07'],14:window.preDarianMotionData['08'],15:window.preDarianMotionData['09']};
+      const addGlyphScene=(panel,groups)=>{
+        panel.querySelector('.vertical-copy')?.style.setProperty('inset','0');
+        const tl=makeScrollTimeline(panel);
+        const groupStep=.36/Math.max(1,groups.length);
+        groups.forEach((group,groupIndex)=>{
+          const glyphs=splitGlyphs(group);
+          layoutGlyphLine(group,layoutBoxes[scenePanels.indexOf(panel)][groupIndex]);
+          const start=.035+groupIndex*groupStep*.80;
+          tl.fromTo(glyphs,
+            {autoAlpha:0,y:index=>40+index*11,scale:1.20},
+            {autoAlpha:1,y:0,scale:1,duration:.25,stagger:{each:Math.min(.017,.11/Math.max(1,glyphs.length-1))},ease:'power2.out'},
+            start
+          );
+          tl.to(glyphs,{autoAlpha:0,y:index=>-(glyphs.length-1-index)*16,scale:.965,duration:.37,ease:'power2.in'},.60);
+        });
+      };
+      [3,4,5].forEach(index=>addGlyphScene(scenePanels[index],[...scenePanels[index].querySelectorAll('.vline')]));
+      [13,14,15].forEach(index=>addGlyphScene(scenePanels[index],[...scenePanels[index].querySelectorAll('.track')]));
+
+      const darianVerseBoxes=[
+        {x:1300,y:432,w:41,h:777,steps:10},{x:1122,y:294,w:41,h:918,steps:12},
+        {x:943,y:432,w:40,h:700,steps:9},{x:765,y:576,w:41,h:894,steps:12},
+        {x:587,y:294,w:41,h:991,steps:14},{x:522,y:620,w:40,h:993,steps:14},
+        {x:343,y:432,w:42,h:623,steps:8},{x:164,y:576,w:41,h:629,steps:8}
+      ];
+      const finalVerseBoxes=[
+        {x:1300,y:419,w:40,h:776,steps:10},{x:1111,y:282,w:41,h:920,steps:12},
+        {x:922,y:561,w:40,h:705,steps:9},{x:732,y:418,w:40,h:913,steps:12},
+        {x:542,y:283,w:42,h:992,steps:14},{x:354,y:418,w:41,h:992,steps:14},
+        {x:164,y:282,w:42,h:1590,rhythmH:1344,steps:19}
+      ];
+      const addVerseScene=(panel,boxes,isFinal=false)=>{
+        panel.classList.add('darian-verse-panel');
+        if(isFinal)panel.classList.add('darian-verse-final-panel');
+        const copy=panel.querySelector('.vertical-copy');
+        copy.style.inset='0';
+        if(!isFinal){
+          const source=copy.lastElementChild;
+          source.textContent='WU　生活扣进肩里';
+          const second=source.cloneNode(false);
+          second.textContent='用汗水　把辛劳洗净';
+          source.after(second);
+        }
+        const lines=[...panel.querySelectorAll('.vline')];
+        const tl=isFinal?gsap.timeline({
+          scrollTrigger:{
+            trigger:panel,
+            start:()=>`top ${panelCrossing(panel)}%`,
+            end:'bottom bottom',
+            scrub:.34,
+            invalidateOnRefresh:true
+          }
+        }).to({}, {duration:1}):makeScrollTimeline(panel);
+        lines.forEach((line,index)=>{
+          const box=boxes[index];
+          const verseFontScale=1.38;
+          const visualWidth=box.w*verseFontScale;
+          const centeredX=box.x-(visualWidth-box.w)/2;
+          line.classList.add('verse-positioned');
+          Object.assign(line.style,{
+            left:`${centeredX/15}%`,top:`${box.y/20.05}%`,
+            width:`${visualWidth/15}%`,height:`${box.h/20.05}%`
+          });
+          const glyphCount=[...line.textContent].filter(ch=>ch!=='\n').length||box.steps;
+          line.style.setProperty('--verse-size',`${(visualWidth/15).toFixed(3)}cqw`);
+          const rhythmH=box.rhythmH??box.h;
+          line.style.setProperty('--verse-ls',`${Math.max(0,(rhythmH/glyphCount-visualWidth)/15).toFixed(3)}cqw`);
+          const start=(isFinal?.025:.03)+index*(isFinal?.045:.028);
+          const duration=isFinal?.36:.30;
+          const steps=box.steps;
+          tl.fromTo(line,
+            {autoAlpha:0,y:(isFinal?58:52)+index*7,scale:isFinal?1.14:1.13,clipPath:'inset(0 0 100% 0)'},
+            {autoAlpha:1,y:0,scale:1,duration,ease:'power2.out'},
+            start
+          );
+          tl.to(line,{clipPath:'inset(0 0 0% 0)',duration,ease:`steps(${steps})`},start);
+          tl.set(line,{clipPath:'none'},start+duration);
+          if(!isFinal)tl.to(line,
+            {autoAlpha:0,y:-62-(lines.length-1-index)*9,scale:.96,duration:.30,ease:'power2.in'},
+            .60+index*.012
+          );
+        });
+      };
+      addVerseScene(scenePanels[7],darianVerseBoxes);
+      addVerseScene(scenePanels[12],finalVerseBoxes,true);
+
+      const darianPanel=scenePanels[6];
+      const darianTitle=darianPanel.querySelector('.darian-title');
+      const titleText=[...darianTitle.childNodes].find(node=>node.nodeType===Node.TEXT_NODE);
+      const placeholder=document.createElement('span');
+      placeholder.className='darian-title-placeholder';
+      placeholder.textContent='达里安';
+      titleText.replaceWith(placeholder);
+      const darianBase=makeStage(darianPanel,['.darian-title']);
+      addBasicScene(darianPanel,darianBase);
+      const makeDarianWord=className=>{
+        const word=document.createElement('p');
+        word.className=`darian-live-word ${className}`;
+        [...'达里安'].forEach(character=>{
+          const plane=document.createElement('span');
+          plane.className='darian-glyph-plane';
+          const artboard=document.createElement('span');
+          artboard.className='live-artboard darian-glyph-artboard';
+          const glyph=document.createElement('span');
+          glyph.className='live-glyph';
+          glyph.textContent=character;
+          artboard.append(glyph);
+          plane.append(artboard);
+          word.append(plane);
+        });
+        darianPanel.querySelector('.frame').append(word);
+        return [...word.children];
+      };
+      const darianMains=makeDarianWord('darian-main-word');
+      const darianGhosts=makeDarianWord('darian-ghost-word');
+      darianGhosts[0].parentElement.setAttribute('aria-hidden','true');
+      const darianFrom=[{x:0,y:-28.05},{x:54.4,y:-1.4},{x:0,y:15.1}];
+      const darianTl=makeScrollTimeline(darianPanel);
+      darianMains.forEach((glyph,index)=>darianTl.fromTo(glyph,
+        {autoAlpha:0,xPercent:darianFrom[index].x*1.35,yPercent:darianFrom[index].y*1.35,scale:2.25},
+        {autoAlpha:1,xPercent:0,yPercent:0,scale:1,duration:.53,ease:'power2.out'},
+        .025+index*.03
+      ));
+      darianGhosts.forEach((glyph,index)=>darianTl.fromTo(glyph,
+        {autoAlpha:.20,xPercent:darianFrom[index].x*1.35,yPercent:darianFrom[index].y*1.35,scale:6.5},
+        {autoAlpha:0,xPercent:0,yPercent:0,scale:2.1,duration:.50,ease:'power2.out'},
+        .025+index*.03
+      ));
+      darianMains.forEach((glyph,index)=>darianTl.to(glyph,
+        {autoAlpha:0,xPercent:darianFrom[index].x*.48,yPercent:darianFrom[index].y*.48,scale:.92,duration:.36,ease:'power2.in'},
+        .58+index*.02
+      ));
+
+      const finalTitleBox={x1:542,y1:699,x2:961,y2:861};
+      const hookFlashPools={
+        wuwang:['劳作','收起','耕地','农民','农夫','土地','田野','忘记','道理','矛盾','洗礼','无需','来临','一贯','随形','如影','献祭','自己','山谷','夜里','枯萎','新生','歌剧','劳苦','希望','诗句','生活','汗水','辛劳','洗净','文明','远景','优先','出局','功成','踪迹','等候','泡影','车间','铆钉','手臂','无心','风景','困住','原地','城市','广厦','眩目','山里','走入','山林','人们','丢掉','一阵','找回'],
+        jianchi:['再走一步','继续劳作','走过田野','穿过山谷','抬起手臂','守住呼吸','等候天明','捡起工具','擦净汗水','扛过风雨','走进山林','越过长夜','看见晨光','踏过泥泞','拾起种子','翻开土地','点亮灯火','留住体温','迎着冷风','顺着河流','迈出门口','穿过车间','握紧双手','唤醒身体','守到日出','等到春天','越过围栏','沿路前行','走出城市','回到田间','扶起麦穗','推开大门','继续呼喊','再唱一遍','留下脚印','保持清醒','看向远处','走近人群','迎接雨水','把灯点亮','把路走完','把手握紧','把心放稳','让风吹过','让雨落下','让船靠岸','让鸟飞过','让草生长','让河奔流','让夜过去','让光进来','让人醒来','让梦继续','让歌响起','仍向前走'],
+        fangqi:['风吹不散','雨打不退','长夜未尽','山路未完','河流未止','灯火未熄','种子未眠','麦穗未倒','鸟群未散','心跳未停','呼吸还在','脚步还在','双手还在','目光还在','田野还在','山谷还在','晨光将至','春天将至','大门将开','河岸将近','天色将明','风声渐远','雨声渐轻','泥土回暖','草木重生','云层散开','远方显现','道路延伸','火光摇曳','人群汇合','城市苏醒','车间开灯','铁轨向前','船只离岸','手臂抬起','脊背挺直','眼睛睁开','名字留下','歌声继续','回答仍在','感受仍在','爱意仍在','故乡仍在','土地仍在','记忆仍在','故事未完','旅程未完','远征未完','歌曲未完','今天未完','明天会来','我们还在','再看一眼','再说一遍','再等一会'],
+        huozhe:['呼吸','心跳','晨光','雨水','泥土','草叶','飞鸟','风声','河流','树影','云层','脚步','体温','眼泪','笑声','拥抱','醒来','睡去','行走','停留','回望','相爱','创造','感受','回答','火光','灯火','春天','夏夜','秋风','冬雪','麦穗','种子','河岸','远方','故乡','名字','歌声','目光','双手','脊背','皮肤','血液','心脏','清晨','黄昏','日出','月光','星辰','海面','旷野','道路','归来','出发','此刻']
+      };
+      const hookConfigs=[
+        {panel:scenePanels[8],next:scenePanels[9],label:'勿亡',flashWords:hookFlashPools.wuwang,rows:[{x:.292,y:.115,scale:1.40},{x:.435,y:.236,scale:1.85},{x:.413,y:.374,scale:2.25}]},
+        {panel:scenePanels[9],next:scenePanels[10],label:'坚持下去',flashWords:hookFlashPools.jianchi,rows:[{x:.698,y:.116,scale:1.40},{x:.535,y:.238,scale:1.85},{x:.375,y:.374,scale:2.25}]},
+        {panel:scenePanels[10],next:scenePanels[11],label:'不要放弃',flashWords:hookFlashPools.fangqi,rows:[{x:.280,y:.140,scale:1.40},{x:.650,y:.255,scale:1.85},{x:.450,y:.395,scale:2.25}]},
+        {panel:scenePanels[11],next:scenePanels[12],label:'活着',flashWords:hookFlashPools.huozhe,rows:[{x:.580,y:.120,scale:1.40},{x:.320,y:.250,scale:1.85},{x:.530,y:.390,scale:2.25}]}
+      ];
+      const titleCenterMetrics=frame=>{
+        const frameRect=frame.getBoundingClientRect();
+        const artScale=Math.min(frameRect.width/1500,frameRect.height/2005);
+        const offsetX=(frameRect.width-1500*artScale)/2;
+        const offsetY=(frameRect.height-2005*artScale)/2;
+        const targetX=offsetX+(finalTitleBox.x1+finalTitleBox.x2)/2*artScale;
+        const targetY=offsetY+(finalTitleBox.y1+finalTitleBox.y2)/2*artScale;
+        return {frameRect,targetX,targetY};
+      };
+      const hookRowMetrics=(frame,start)=>{
+        const {frameRect,targetX,targetY}=titleCenterMetrics(frame);
+        return {x:frameRect.width*start.x-targetX,y:frameRect.height*start.y-targetY};
+      };
+      const makeHookScene=(panel,label,flashWords)=>{
+        const frame=panel.querySelector('.frame');
+        const base=panel.querySelector('.chorus');
+        panel.classList.add('hook-type-test');
+        gsap.set(base,{autoAlpha:0});
+        const scene=document.createElement('div');
+        scene.className='hook-type-scene';
+        const typedWords=[1,2,3].map(index=>{
+          const word=document.createElement('p');
+          word.className=`hook-type-word hook-type-word-${index}`;
+          [...'达里安'].forEach(text=>{
+            const glyph=document.createElement('span');
+            glyph.className='hook-type-glyph';
+            glyph.textContent=text;
+            word.append(glyph);
+          });
+          scene.append(word);
+          return word;
+        });
+        const dyd=document.createElement('p');
+        dyd.className='hook-type-dyd';
+        dyd.textContent='DON’T YOU DIE';
+        scene.append(dyd);
+        const cycle=document.createElement('div');
+        cycle.className='hook-type-cycle';
+        [...flashWords,label].forEach(text=>{
+          const word=document.createElement('span');
+          word.textContent=text;
+          cycle.append(word);
+        });
+        scene.append(cycle);
+        frame.append(scene);
+        return {frame,typedWords,dyd,cycle};
+      };
+      hookConfigs.forEach(config=>{
+        const state=makeHookScene(config.panel,config.label,config.flashWords);
+        const tl=gsap.timeline({
+          scrollTrigger:{
+            trigger:config.panel,
+            endTrigger:config.next,
+            start:()=>`top ${panelCrossing(config.panel)}%`,
+            end:()=>`top ${panelCrossing(config.next)}%`,
+            scrub:.28,
+            invalidateOnRefresh:true
+          }
+        }).to({}, {duration:1});
+        state.typedWords.forEach((word,wordIndex)=>{
+          const glyphs=[...word.children];
+          const start=.035+wordIndex*.055;
+          const row=config.rows[wordIndex];
+          tl.set(word,{xPercent:-50,yPercent:-50,x:()=>hookRowMetrics(state.frame,row).x,y:()=>hookRowMetrics(state.frame,row).y,scale:row.scale,autoAlpha:1},0);
+          tl.fromTo(glyphs,{autoAlpha:0},{autoAlpha:.38,duration:.018,stagger:.028,ease:'steps(1)'},start);
+        });
+        tl.fromTo(state.dyd,{autoAlpha:0,letterSpacing:'9vw'},{autoAlpha:.32,letterSpacing:'9vw',duration:.025,ease:'steps(1)'},.205);
+        state.typedWords.forEach((word,index)=>{
+          const glyphs=[...word.children];
+          tl.to(word,{x:0,y:0,scale:1,duration:.29,ease:'power3.inOut'},.35+index*.012);
+          tl.to(glyphs,{autoAlpha:index===2?1:.55,duration:.29,ease:'power3.inOut'},.35+index*.012);
+          if(index<2)tl.to(word,{autoAlpha:0,duration:.075,ease:'power1.out'},.57+index*.012);
+        });
+        tl.to(state.dyd,{letterSpacing:'0em',autoAlpha:1,duration:.34,ease:'power3.inOut'},.32);
+        const cycleSpans=[...state.cycle.children];
+        const cycleStart=.035,cycleEnd=.685,cycleStep=(cycleEnd-cycleStart)/(cycleSpans.length-1);
+        cycleSpans.forEach((word,index)=>{
+          const at=cycleStart+index*cycleStep;
+          if(index)tl.set(cycleSpans[index-1],{autoAlpha:0},at);
+          tl.set(word,{autoAlpha:1},at);
+        });
+      });
+
+      ScrollTrigger.create({
+        trigger:scenePanels.at(-1),
+        start:'top center',
+        onToggle:self=>document.body.classList.toggle('at-end',self.isActive)
+      });
+      const refreshStableState=()=>{ScrollTrigger.refresh();ScrollTrigger.update();scheduleMediaSync()};
+      addEventListener('load',refreshStableState,{once:true});
+      document.fonts?.ready?.then(refreshStableState);
+      requestAnimationFrame(refreshStableState);
+      addEventListener('pageshow',refreshStableState);
+      addEventListener('orientationchange',()=>setTimeout(refreshStableState,250),{passive:true});
+      const audios=[albumAudio,darianAudio];
+      document.addEventListener('visibilitychange',()=>{
+        if(document.visibilityState==='visible'){
+          refreshStableState();
+          return;
+        }
+        const keepAudio=pendingAudio&&!pendingAudio.paused?pendingAudio:currentAudio;
+        audioTransitionId++;
+        pendingAudio=null;
+        pendingAudioPromise=null;
+        gsap.killTweensOf(audios);
+        audios.forEach(audio=>{
+          if(audio===keepAudio&&!audio.paused){
+            audio.volume=1;
+          }else{
+            audio.volume=0;
+            audio.pause();
+          }
+        });
+        currentAudio=keepAudio&&!keepAudio.paused?keepAudio:null;
+        syncVideoPlayback();
+      });
+      const unlockEvents=['pointerdown','touchstart','click','keydown','wheel'];
+      let unlockAttempting=false;
+      const unlockMedia=()=>{
+        if(audioUnlocked||unlockAttempting)return;
+        unlockAttempting=true;
+        syncVideoPlayback();
+        const target=darianGateLocked||wantsDarianMedia()?darianAudio:albumAudio;
+        const secondary=target===albumAudio?darianAudio:albumAudio;
+        target.volume=0;
+        secondary.volume=0;
+        mediaPlay(secondary).then(()=>{
+          if(secondary!==currentAudio){secondary.pause();secondary.currentTime=0}
+        }).catch(()=>{});
+        mediaPlay(target).then(()=>{
+          audioUnlocked=true;
+          unlockAttempting=false;
+          unlockEvents.forEach(type=>removeEventListener(type,unlockMedia));
+          currentAudio=target;
+          target.volume=1;
+          syncMediaState();
+          if(darianGateLocked)requestDarianPlayback();
+        }).catch(()=>{
+          unlockAttempting=false;
+          target.volume=0;
+        });
+      };
+      unlockEvents.forEach(type=>addEventListener(type,unlockMedia,{passive:true}));
+
+      let autoplayAttempting=false;
+      const attemptInitialAlbumAutoplay=()=>{
+        if(audioUnlocked||autoplayAttempting)return;
+        autoplayAttempting=true;
+        albumAudio.volume=1;
+        darianAudio.volume=0;
+        const darianPrime=darianAudio.play();
+        darianPrime?.then(()=>{
+          if(darianAudio!==currentAudio){darianAudio.pause();darianAudio.currentTime=0}
+        }).catch(()=>{});
+        const albumStart=albumAudio.play();
+        if(!albumStart){
+          audioUnlocked=true;
+          currentAudio=albumAudio;
+          autoplayAttempting=false;
+          syncMediaState();
+          return;
+        }
+        albumStart.then(()=>{
+          audioUnlocked=true;
+          currentAudio=albumAudio;
+          autoplayAttempting=false;
+          syncMediaState();
+        }).catch(()=>{
+          autoplayAttempting=false;
+          albumAudio.volume=0;
+        });
+      };
+      document.addEventListener('WeixinJSBridgeReady',attemptInitialAlbumAutoplay,{once:true});
+
+      const darianGateStorageKey='fengrao-darian-gate-passed-v1';
+      const readGateState=()=>{
+        try{return sessionStorage.getItem(darianGateStorageKey)==='1'}catch{return false}
+      };
+      const writeGateState=()=>{
+        try{sessionStorage.setItem(darianGateStorageKey,'1')}catch{}
+      };
+      let darianGatePassed=readGateState();
+      let darianGateLocked=false;
+      let gateTouchY=null;
+      let gateCheckFrame=0;
+      let gateConfirmTimer=0;
+      let gateFallbackTimer=0;
+      const darianGateY=()=>Math.round(scenePanels[6].offsetTop);
+      const setDarianGateLocked=locked=>{
+        darianGateLocked=locked;
+      };
+      const releaseDarianGate=()=>{
+        if(!darianGateLocked)return;
+        darianGatePassed=true;
+        writeGateState();
+        clearTimeout(gateConfirmTimer);
+        clearTimeout(gateFallbackTimer);
+        gateConfirmTimer=0;
+        gateFallbackTimer=0;
+        setDarianGateLocked(false);
+      };
+      const recoverFromDarianFailure=()=>{
+        darianAudioFailed=true;
+        audioTransitionId++;
+        pendingAudio=null;
+        pendingAudioPromise=null;
+        gsap.killTweensOf([albumAudio,darianAudio]);
+        darianAudio.volume=0;
+        darianAudio.pause();
+        if(audioUnlocked){
+          currentAudio=albumAudio;
+          albumAudio.volume=1;
+          if(albumAudio.paused)mediaPlay(albumAudio).catch(()=>{});
+        }
+      };
+      const failOpenDarianGate=()=>{
+        if(!darianGateLocked)return;
+        recoverFromDarianFailure();
+        releaseDarianGate();
+      };
+      const armDarianFallback=()=>{
+        if(!darianGateLocked||!audioUnlocked||gateFallbackTimer)return;
+        gateFallbackTimer=setTimeout(()=>{
+          gateFallbackTimer=0;
+          if(!darianAudio.paused&&darianAudio.readyState>=2&&darianAudio.currentTime>0){
+            releaseDarianGate();
+          }else{
+            failOpenDarianGate();
+          }
+        },12000);
+      };
+      const confirmDarianPlayback=()=>{
+        if(!darianGateLocked)return;
+        clearTimeout(gateConfirmTimer);
+        gateConfirmTimer=setTimeout(()=>{
+          gateConfirmTimer=0;
+          if(!darianAudio.paused&&darianAudio.readyState>=2&&darianAudio.currentTime>0)releaseDarianGate();
+        },220);
+      };
+      const requestDarianPlayback=()=>{
+        if(!audioUnlocked)return;
+        if(darianAudio.error){failOpenDarianGate();return}
+        armDarianFallback();
+        activateAudio(darianAudio).then(started=>{
+          if(started)confirmDarianPlayback();
+          else if(darianAudio.error)failOpenDarianGate();
+        });
+      };
+      const enforceDarianGate=()=>{
+        if(darianGatePassed)return;
+        const limit=darianGateY();
+        if(scrollY>=limit){
+          if(!darianGateLocked){
+            setDarianGateLocked(true);
+            requestDarianPlayback();
+          }
+          if(scrollY>limit+1)scrollTo(0,limit);
+        }else if(darianGateLocked&&scrollY<limit-2){
+          setDarianGateLocked(false);
+        }
+      };
+      const scheduleGateCheck=()=>{
+        if(gateCheckFrame)return;
+        gateCheckFrame=requestAnimationFrame(()=>{gateCheckFrame=0;enforceDarianGate()});
+      };
+      addEventListener('scroll',scheduleGateCheck,{passive:true});
+      darianAudio.addEventListener('playing',confirmDarianPlayback);
+      darianAudio.addEventListener('error',()=>{
+        darianAudioFailed=true;
+        if(darianGateLocked)failOpenDarianGate();
+        else scheduleMediaSync();
+      });
+      darianAudio.addEventListener('canplay',()=>{
+        if(darianAudioFailed&&!darianAudio.error){
+          darianAudioFailed=false;
+          scheduleMediaSync();
+        }
+      });
+      addEventListener('touchstart',event=>{
+        gateTouchY=event.touches[0]?.clientY??null;
+        if(darianGateLocked)requestDarianPlayback();
+      },{passive:true});
+      addEventListener('touchmove',event=>{
+        const nextY=event.touches[0]?.clientY??gateTouchY;
+        if(darianGateLocked&&gateTouchY!==null&&nextY<gateTouchY)event.preventDefault();
+        gateTouchY=nextY;
+      },{passive:false});
+      addEventListener('touchend',()=>{gateTouchY=null},{passive:true});
+      addEventListener('wheel',event=>{
+        if(darianGateLocked&&event.deltaY>0){
+          unlockMedia();
+          requestDarianPlayback();
+          event.preventDefault();
+        }
+      },{passive:false});
+      addEventListener('keydown',event=>{
+        if(darianGateLocked&&['ArrowDown','PageDown','End',' '].includes(event.key)){
+          unlockMedia();
+          requestDarianPlayback();
+          event.preventDefault();
+        }
+      });
+      requestAnimationFrame(enforceDarianGate);
+    })();
+  </script>
+  <script>
+    (()=>{
+      const gate=document.querySelector('.entry-gate');
+      const action=gate?.querySelector('.entry-action');
+      if(!gate||!action)return;
+      let ready=false;
+      let shown=0;
+      const startedAt=performance.now();
+      const setLabel=value=>{shown=Math.max(shown,Math.min(99,Math.round(value)));action.textContent=`载入中 ${shown}%`};
+      const visualTick=()=>{
+        if(ready)return;
+        const elapsed=performance.now()-startedAt;
+        setLabel(12+76*(1-Math.exp(-elapsed/1100)));
+        requestAnimationFrame(visualTick);
+      };
+      const imageReady=image=>image.complete&&image.naturalWidth?Promise.resolve():image.decode?.().catch(()=>{})||new Promise(resolve=>image.addEventListener('load',resolve,{once:true}));
+      const critical=[...gate.querySelectorAll('.entry-critical-image')].map(imageReady);
+      const fontReady=document.fonts?.ready||Promise.resolve();
+      const pageReady=document.readyState==='complete'?Promise.resolve():new Promise(resolve=>addEventListener('load',resolve,{once:true}));
+      requestAnimationFrame(visualTick);
+      Promise.allSettled([...critical,fontReady,pageReady]).then(()=>{
+        const wait=Math.max(0,700-(performance.now()-startedAt));
+        setTimeout(()=>{
+          ready=true;
+          action.textContent='开始播放';
+          action.classList.add('is-ready');
+          action.setAttribute('aria-disabled','false');
+          if(new URLSearchParams(location.search).get('autostart')==='1')action.click();
+        },wait);
+      });
+      action.addEventListener('click',()=>{
+        if(!ready)return;
+        ready=false;
+        action.disabled=true;
+        scrollTo(0,0);
+        dispatchEvent(new Event('fengrao:start'));
+        document.documentElement.classList.remove('entry-pending');
+        gate.classList.add('is-leaving');
+        setTimeout(()=>{gate.hidden=true},680);
+      });
+    })();
+  </script>
+  <script src="../scene-assets/vendor/swiper.min.js"></script>
+  <script>
+    (()=>{
+      if(!window.Swiper||!window.gsap||!window.ScrollTrigger)return;
+      const root=document.documentElement;
+      const isolateMode='';
+      const isolateVideo=isolateMode==='video'||isolateMode==='all';
+      const isolateMotion=isolateMode==='motion'||isolateMode==='all';
+      root.classList.add('single-video-pilot');
+      if(isolateVideo)root.classList.add('diag-static');
+      if(isolateMotion&&!isolateVideo){
+        root.classList.remove('diag-static');
+        root.classList.add('isolate-motion');
+      }
+      root.dataset.isolate=isolateMode;
+      const main=document.querySelector('main');
+      const panels=[...main.querySelectorAll(':scope > .panel')];
+      if(!panels.length)return;
+
+      root.classList.add('swiper-pilot');
+      main.classList.add('swiper');
+      const wrapper=document.createElement('div');
+      wrapper.className='swiper-wrapper';
+      panels.forEach(panel=>{
+        panel.classList.add('swiper-slide');
+        wrapper.append(panel);
+      });
+      main.replaceChildren(wrapper);
+
+      const frameCache=panels.map(panel=>panel.querySelector('.frame'));
+      const triggerEntries=ScrollTrigger.getAll().map(trigger=>{
+        const triggerNode=trigger.trigger;
+        const panel=triggerNode?.classList?.contains('panel')?triggerNode:triggerNode?.closest?.('.panel');
+        const index=panels.indexOf(panel);
+        const animation=trigger.animation||null;
+        const isVideoCrossfade=animation&&trigger.vars?.start==='top 18%';
+        trigger.disable(false,true);
+        if(animation)animation.pause(0);
+        return {trigger,index,animation,isVideoCrossfade};
+      });
+      if(isolateMotion){
+        triggerEntries.forEach(entry=>{
+          if(entry.animation&&!entry.isVideoCrossfade)entry.animation.progress(.5).pause();
+        });
+      }
+
+      const grassVideo=document.querySelector('.film-grass');
+      const buildingVideo=document.querySelector('.film-single');
+      const film=grassVideo.closest('.film');
+      const albumAudio=document.querySelector('.album-audio');
+      const darianAudio=document.querySelector('.darian-audio');
+      if(isolateVideo){
+        [grassVideo,buildingVideo].forEach(video=>{
+          video.pause();
+          video.play=()=>Promise.resolve();
+        });
+      }
+      const darianIndex=panels.findIndex(panel=>panel.getAttribute('aria-label')==='首发单曲 达里安');
+      let entryStarted=false;
+      let darianAttached=darianAudio.readyState>0;
+      let mediaFrame=0;
+      let visualZone='grass';
+      let visualSwitchToken=0;
+
+      const clamp=value=>Math.max(0,Math.min(1,value));
+      const chooseVideoSource=video=>{
+        const connection=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+        const constrained=connection?.saveData||['slow-2g','2g','3g'].includes(connection?.effectiveType);
+        return video.dataset[constrained||matchMedia('(max-width:750px)').matches?'srcMobile':'srcDesktop'];
+      };
+      const attachDarian=()=>{
+        if(darianAttached)return;
+        darianAudio.preload='metadata';
+        darianAudio.load();
+        darianAttached=true;
+      };
+      const safePlay=media=>{
+        try{
+          const result=media.play();
+          result?.catch?.(()=>{});
+        }catch{}
+      };
+      const visualMedia={
+        grass:{src:'../scene-assets/video-hq15/grass-15s-1080p-formal.mp4',poster:'../scene-assets/grass-still.jpg'},
+        building:{src:'../scene-assets/video-hq15/building-15s-1080p-formal.mp4',poster:'../scene-assets/building-still.jpg'}
+      };
+      const switchVisual=zone=>{
+        const media=visualMedia[zone];
+        const desired=new URL(media.src,document.baseURI).href;
+        const current=grassVideo.currentSrc||grassVideo.src;
+        if(zone===visualZone&&current===desired){
+          film.style.backgroundImage=`url("${media.poster}")`;
+          if(entryStarted&&grassVideo.paused)safePlay(grassVideo);
+          return;
+        }
+        visualZone=zone;
+        const token=++visualSwitchToken;
+        film.classList.add('is-switching');
+        film.style.backgroundImage=`url("${media.poster}")`;
+        grassVideo.pause();
+        grassVideo.removeAttribute('src');
+        grassVideo.load();
+        grassVideo.poster=media.poster;
+        grassVideo.src=media.src;
+        grassVideo.preload='auto';
+        const reveal=()=>{
+          if(token!==visualSwitchToken)return;
+          const done=()=>requestAnimationFrame(()=>film.classList.remove('is-switching'));
+          if(!entryStarted){done();return}
+          try{
+            const attempt=grassVideo.play();
+            Promise.resolve(attempt).then(done).catch(done);
+          }catch{done()}
+        };
+        grassVideo.addEventListener('loadeddata',reveal,{once:true});
+        grassVideo.load();
+      };
+      const playExclusive=(target,outgoing)=>{
+        target.volume=1;
+        try{
+          const started=target.play();
+          Promise.resolve(started).then(()=>{
+            outgoing.pause();
+            outgoing.volume=0;
+          }).catch(()=>{});
+        }catch{}
+      };
+      let audioZone='';
+
+      let lastMountIndex=-1;
+      const updateMountWindow=index=>{
+        const center=Math.max(0,Math.min(panels.length-1,index));
+        if(center===lastMountIndex)return;
+        lastMountIndex=center;
+        panels.forEach((panel,panelIndex)=>{
+          const near=Math.abs(panelIndex-center)<=1;
+          panel.classList.toggle('is-near',near);
+          panel.setAttribute('aria-hidden',near?'false':'true');
+          const frame=frameCache[panelIndex];
+          if(near){
+            if(!frame.isConnected)panel.append(frame);
+          }else if(frame.isConnected){
+            frame.remove();
+          }
+        });
+      };
+
+      const updateTimelines=position=>{
+        triggerEntries.forEach(entry=>{
+          if(!entry.animation||entry.index<0)return;
+          if(entry.isVideoCrossfade)return;
+          if(isolateMotion&&!entry.isVideoCrossfade)return;
+          let progress=clamp(position-(entry.index-.5));
+          if(entry.isVideoCrossfade)progress=clamp((progress-.55)/.28);
+          entry.animation.progress(progress).pause();
+        });
+      };
+
+      const syncMedia=position=>{
+        if(isolateVideo){
+          grassVideo.pause();
+          buildingVideo.pause();
+          return;
+        }
+        if(position>=Math.max(0,darianIndex-2.1)){
+          attachDarian();
+        }
+        if(!entryStarted)return;
+        const nextAudioZone=position>=darianIndex-.35?'darian':'album';
+        const targetAudio=nextAudioZone==='darian'?darianAudio:albumAudio;
+        const outgoingAudio=nextAudioZone==='darian'?albumAudio:darianAudio;
+        if(nextAudioZone!==audioZone||targetAudio.paused||!outgoingAudio.paused){
+          audioZone=nextAudioZone;
+          playExclusive(targetAudio,outgoingAudio);
+        }
+        switchVisual(position>=darianIndex+.35?'building':'grass');
+      };
+
+      const updateFromSwiper=swiper=>{
+        if(mediaFrame)return;
+        mediaFrame=requestAnimationFrame(()=>{
+          mediaFrame=0;
+          const position=clamp(-swiper.translate/Math.max(1,swiper.height)/Math.max(1,panels.length-1))*(panels.length-1);
+          updateTimelines(position);
+          updateMountWindow(Math.round(position));
+          syncMedia(position);
+          document.body.classList.toggle('at-end',position>=panels.length-1.35);
+        });
+      };
+
+      const swiper=new Swiper(main,{
+        direction:'vertical',
+        speed:760,
+        slidesPerView:1,
+        spaceBetween:0,
+        followFinger:true,
+        threshold:4,
+        resistanceRatio:.58,
+        longSwipesRatio:.18,
+        longSwipesMs:180,
+        shortSwipes:true,
+        watchSlidesProgress:true,
+        observer:true,
+        observeParents:true,
+        on:{
+          init(instance){updateMountWindow(0);updateTimelines(0);syncMedia(0)},
+          setTranslate(instance){updateFromSwiper(instance)},
+          activeIndexChange(instance){updateMountWindow(instance.activeIndex)},
+          resize(instance){updateFromSwiper(instance)}
+        }
+      });
+
+      let wheelLocked=false;
+      addEventListener('wheel',event=>{
+        event.preventDefault();
+        if(wheelLocked||Math.abs(event.deltaY)<8)return;
+        wheelLocked=true;
+        if(event.deltaY>0)swiper.slideNext();
+        else swiper.slidePrev();
+        setTimeout(()=>{wheelLocked=false},820);
+      },{passive:false});
+      addEventListener('keydown',event=>{
+        if(['ArrowDown','PageDown',' '].includes(event.key)){
+          event.preventDefault();
+          swiper.slideNext();
+        }else if(['ArrowUp','PageUp'].includes(event.key)){
+          event.preventDefault();
+          swiper.slidePrev();
+        }else if(event.key==='Home'){
+          event.preventDefault();
+          swiper.slideTo(0);
+        }else if(event.key==='End'){
+          event.preventDefault();
+          swiper.slideTo(panels.length-1);
+        }
+      });
+
+      const startDarian=()=>{
+        attachDarian();
+        playExclusive(darianAudio,albumAudio);
+      };
+      swiper.on('slideChangeTransitionStart',()=>{
+        if(swiper.activeIndex>=darianIndex)startDarian();
+        else if(entryStarted)playExclusive(albumAudio,darianAudio);
+      });
+      addEventListener('fengrao:start',()=>{
+        entryStarted=true;
+        if(isolateVideo){
+          grassVideo.pause();
+          buildingVideo.pause();
+        }else{
+          if(!grassVideo.currentSrc){
+            grassVideo.src=chooseVideoSource(grassVideo);
+            grassVideo.preload='auto';
+            grassVideo.load();
+          }
+          if(grassVideo.paused)safePlay(grassVideo);
+        }
+        updateFromSwiper(swiper);
+      });
+      document.addEventListener('visibilitychange',()=>{
+        if(document.visibilityState==='visible')updateFromSwiper(swiper);
+      });
+      addEventListener('orientationchange',()=>setTimeout(()=>{swiper.update();updateFromSwiper(swiper)},220),{passive:true});
+      updateMountWindow(0);
+      updateTimelines(0);
+      window.__fengraoSwiperPilot={swiper,panels,triggerEntries,frameCache};
+    })();
+  </script>
+</body>
+</html>
